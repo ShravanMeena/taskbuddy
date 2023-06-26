@@ -47,7 +47,7 @@ const TBInput = ({
       pLeft={left ? TBSpacing.medium : undefined}
       row
       radius={TBSpacing.medium}
-      color={color ? color : TBColors.grey}
+      color={color ? color : TBColors.white}
       spaceBetween={spaceBetween}
       height={height}>
       {left && leftIconUrl && (
@@ -62,7 +62,7 @@ const TBInput = ({
         <TBText
           style={{paddingBottom: TBSpacing.small / 2}}
           semibold
-          color={TBColors.placeholderWhite}
+          color={TBColors.black}
           fontSize={TBFontSize.large}>
           {leftText}
         </TBText>
@@ -107,7 +107,7 @@ const TBInput = ({
 
 const styles = StyleSheet.create({
   baseStyle: {
-    color: TBColors.white,
+    color: TBColors.black,
     fontSize: TBFontSize.large,
     fontWeight: TBFontWeight.medium,
     marginLeft: TBSpacing.xm,

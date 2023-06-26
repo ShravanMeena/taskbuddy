@@ -5,19 +5,27 @@ import {
   TBComponentSize,
   TBFontSize,
   TBFontWeight,
+  TBSpacing,
 } from '../../theme/TBTheme';
 import TBCard from './TBCard';
 import TBText from './TBText';
 import TBButton from './TBButton';
+import {useNavigation} from '@react-navigation/native';
 
-export default function TBHeader({title, btnText, onPress}) {
+export default function TBHeader({title, btnText, screen}) {
+  const {navigate} = useNavigation();
+
+  const navigateToTaskDetails = () => {
+    navigate(screen);
+  };
+
   return (
-    <TBCard row spaceBetween>
+    <TBCard row spaceBetween pLeft={TBSpacing.medium} pRight={TBSpacing.medium}>
       <TBText fontSize={TBFontSize.xxxl} fontWeight={TBFontWeight.bold}>
         {title}
       </TBText>
       <TBButton
-        onPress={onPress}
+        onPress={navigateToTaskDetails}
         width={TBComponentSize.buttonWidthXS}
         backgroundColor={TBColors.transparent}
         containerStyle={{

@@ -1,17 +1,26 @@
 import React, {useState} from 'react';
 import {
-  Alert,
   Modal,
   StyleSheet,
   View,
   TouchableWithoutFeedback,
+  ScrollView,
+  TouchableOpacity,
 } from 'react-native';
-import CreateNewTask from './CreateNewTask';
-import {TBColors} from '../../theme/TBTheme';
-import TBButton from '../atoms/TBButton';
+import UpdateAndCreateTask from './UpdateAndCreateTask';
+import {TBColors, TBOpacity, TBSpacing} from '../../theme/TBTheme';
+import {useDispatch} from 'react-redux';
+import {readByIdTaskAction} from '../../redux/actions/todoActions';
 
-const TBModal = () => {
+const TBModal = ({children, task}) => {
   const [modalVisible, setModalVisible] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const setTaskForUpdate = () => {
+    dispatch(readByIdTaskAction(task));
+  };
+
   return (
     <>
       <Modal
@@ -19,22 +28,25 @@ const TBModal = () => {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
           setModalVisible(!modalVisible);
         }}>
         <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <CreateNewTask />
+              <ScrollView>
+                <UpdateAndCreateTask />
+              </ScrollView>
             </View>
           </View>
         </TouchableWithoutFeedback>
       </Modal>
-      <TBButton
-        backgroundColor={TBColors.primary}
-        title="Create Task"
-        onPress={() => setModalVisible(true)}
-      />
+      <TouchableOpacity
+        onPress={() => {
+          setTaskForUpdate();
+          setModalVisible(true);
+        }}>
+        {children}
+      </TouchableOpacity>
     </>
   );
 };
@@ -44,18 +56,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    backgroundColor: TBColors.transparent,
+    backgroundColor: TBColors.rgbaTransparent,
   },
   modalView: {
-    backgroundColor: TBColors.greyDark,
-    borderRadius: 20,
+    width: '100%',
+    backgroundColor: TBColors.white,
+    // borderTopLeftRadius: TBSpacing.xl,
+    // borderTopRightRadius: TBSpacing.xl,
+    paddingHorizontal: TBSpacing.medium,
+    paddingVertical: TBSpacing.large,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.25,
+    shadowOpacity: TBOpacity.quarter,
     shadowRadius: 4,
     elevation: 5,
   },

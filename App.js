@@ -1,21 +1,29 @@
-import React from 'react';
-import Landing from './src/screens/landing/Landing';
-import TBCard from './src/components/atoms/TBCard';
-import {TBColors, TBSpacing} from './src/theme/TBTheme';
-import HomeScreen from './src/screens/home/HomeScreen';
+// Play.ht to the moon 🚀
 
-export default function App() {
+/* eslint-disable react-native/no-inline-styles */
+import * as React from 'react';
+import {StatusBar} from 'react-native';
+import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
+import {TBColors} from './src/theme/TBTheme';
+import {CoreNavigation} from './src/navigation';
+
+import {Provider} from 'react-redux';
+import {store} from './src/redux/Store';
+
+function App() {
   return (
-    <TBCard
-      flex={1}
-      cardStyle={{
-        padding: TBSpacing.xl,
-        backgroundColor: TBColors.smokeWhite,
-      }}>
-      <HomeScreen />
-    </TBCard>
+    <SafeAreaProvider>
+      <StatusBar barStyle="light-content" />
+      <SafeAreaView style={{flex: 1, backgroundColor: TBColors.smokeWhite}}>
+        <Provider store={store}>
+          <CoreNavigation />
+        </Provider>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
+
+export default App;
 
 // import React, {useState} from 'react';
 // import {View, Text, FlatList} from 'react-native';

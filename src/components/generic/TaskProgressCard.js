@@ -1,7 +1,9 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import TBCard from '../atoms/TBCard';
 import {
   TBColors,
+  TBComponentSize,
   TBFontSize,
   TBFontWeight,
   TBSpacing,
@@ -9,10 +11,11 @@ import {
 import TBText from '../atoms/TBText';
 import TBSpacer from '../atoms/TBSpacer';
 import TBDivider from '../atoms/TBDivider';
+import TBModal from './TBModal';
 
-export default function TaskProgressCard() {
+export default function TaskProgressCard({task}) {
   return (
-    <>
+    <TBModal task={task}>
       <TBCard
         cardStyle={{
           padding: TBSpacing.large,
@@ -21,7 +24,7 @@ export default function TaskProgressCard() {
           borderTopRightRadius: TBSpacing.medium,
         }}>
         <TBText fontSize={TBFontSize.xxxl} fontWeight={TBFontWeight.semibold}>
-          Design UI To-Do App
+          {task.title}
         </TBText>
         <TBSpacer />
         <TBText fontSize={TBFontSize.xl}>Friday, 09 July 2023</TBText>
@@ -35,35 +38,35 @@ export default function TaskProgressCard() {
         <TBText fontSize={TBFontSize.large} color={TBColors.lightGreyText}>
           Description:
         </TBText>
-        <TBText fontSize={TBFontSize.large}>
-          Dooit is a task management and productivity booster app. You can write
-          what you need to do every day. Never miss a task and focus on what
-          matters to your productivity.
-        </TBText>
+        <TBText fontSize={TBFontSize.large}>{task.description}</TBText>
         <TBSpacer />
         <TBCard row spaceBetween>
           <TBCard>
             <TBText fontSize={TBFontSize.large} color={TBColors.lightGreyText}>
               Priority:
             </TBText>
-            <TBText fontSize={TBFontSize.large}>HIGH</TBText>
+            <TBText fontSize={TBFontSize.large}>
+              {task.priority?.toUpperCase()}
+            </TBText>
           </TBCard>
           <TBCard>
             <TBText fontSize={TBFontSize.large} color={TBColors.lightGreyText}>
               Category:
             </TBText>
-            <TBText fontSize={TBFontSize.large}>Personal</TBText>
+            <TBText fontSize={TBFontSize.large}>
+              {task.category?.toUpperCase()}
+            </TBText>
           </TBCard>
         </TBCard>
       </TBCard>
       <TBCard
         cardStyle={{
-          height: 10,
+          height: TBComponentSize.iconHeightS,
           backgroundColor: '#ffe8c7',
           borderBottomLeftRadius: TBSpacing.medium,
           borderBottomRightRadius: TBSpacing.medium,
         }}
       />
-    </>
+    </TBModal>
   );
 }

@@ -1,0 +1,15 @@
+// {
+//   "compilerOptions": {
+//     "baseUrl": ".",
+//     "paths": {
+//       "src/*": ["./src/*"],
+//       "components/*": ["./src/components/*"],
+//       "screens/*": ["./src/screens/*"],
+//       "utils/*": ["./src/utils/*"],
+//       "hooks/*": ["./src/hooks/*"],
+//       "navigation/*": ["./src/navigation/*"],
+//       "assets/*": ["./src/assets/*"],
+//       "redux/*": ["./src/redux/*"],
+//     }
+//   }
+// }
