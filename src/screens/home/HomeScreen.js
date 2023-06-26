@@ -5,11 +5,17 @@ import TBHeader from '../../components/atoms/TBHeader';
 import TBSpacer from '../../components/atoms/TBSpacer';
 import TaskProgressCard from '../../components/generic/TaskProgressCard';
 import {FlatList, ScrollView, Text} from 'react-native';
-import {TBComponentSize, TBSpacing} from '../../theme/TBTheme';
+import {
+  TBColors,
+  TBComponentSize,
+  TBFontSize,
+  TBSpacing,
+} from '../../theme/TBTheme';
 import TaskCompletedCard from '../../components/generic/TaskCompletedCard';
 import {ScreensName} from '../../constants/NavigationConstants';
 import {useSelector} from 'react-redux';
 import TBModal from '../../components/generic/TBModal';
+import TBText from '../../components/atoms/TBText';
 
 export default function HomeScreen() {
   const {tasks} = useSelector(state => state.todoReducer);
@@ -43,10 +49,24 @@ export default function HomeScreen() {
   return (
     <ScrollView nestedScrollEnabled showsVerticalScrollIndicator={false}>
       <TBModal>
-        <Text>CREATE NEW</Text>
+        <TBCard
+          center
+          cardStyle={{
+            backgroundColor: TBColors.primary,
+            padding: TBSpacing.medium,
+          }}>
+          <TBText fontSize={TBFontSize.large} color={TBColors.white}>
+            CREATE NEW
+          </TBText>
+        </TBCard>
       </TBModal>
+      <TBSpacer />
       <TBCard>
-        <TBHeader title="On Progress" screen={ScreensName.TaskDetails} />
+        <TBHeader
+          title="On Progress"
+          completed={false}
+          screen={ScreensName.TaskDetails}
+        />
         <TBCard pLeft={TBSpacing.medium}>
           <FlatList
             data={onGoingTasks}
@@ -57,7 +77,11 @@ export default function HomeScreen() {
           />
         </TBCard>
         <TBSpacer />
-        <TBHeader title="Completed" screen={ScreensName.TaskDetails} />
+        <TBHeader
+          title="Completed"
+          completed
+          screen={ScreensName.TaskDetails}
+        />
         <TBCard pLeft={TBSpacing.medium} pRight={TBSpacing.medium}>
           <FlatList
             data={completedTasks}

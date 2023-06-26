@@ -36,17 +36,17 @@ const UpdateAndCreateTask = () => {
       description: taskDescription,
       priority: taskPriority,
       category: taskCategory,
-      completed: completed,
+      completed,
     };
 
     if (readTask) {
       dispatch(updateTaskAction(readTask.id, newTask));
     } else {
       dispatch(createTaskAction(newTask));
-    }
 
-    setTaskTitle('');
-    setTaskDescription('');
+      setTaskTitle('');
+      setTaskDescription('');
+    }
   };
 
   const deleteTaskHandler = () => {

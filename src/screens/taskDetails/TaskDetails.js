@@ -5,16 +5,22 @@ import TBHeader from '../../components/atoms/TBHeader';
 import TaskProgressCard from '../../components/generic/TaskProgressCard';
 import {FlatList} from 'react-native';
 import {TBSpacing} from '../../theme/TBTheme';
+import {useSelector} from 'react-redux';
 
-const DATA = [1, 2, 34, 12, 3];
+export default function TaskDetails({route}) {
+  const {tasks} = useSelector(state => state.todoReducer);
+  let params = route?.params;
 
-export default function TaskDetails() {
+  let allFilteredData = tasks.filter(
+    todo => todo.completed === params?.completed,
+  );
+
   const renderItemForProgreess = ({item}) => (
     <TBCard
       cardStyle={{
         marginBottom: TBSpacing.small,
       }}>
-      <TaskProgressCard />
+      <TaskProgressCard task={item} />
     </TBCard>
   );
 
@@ -23,11 +29,11 @@ export default function TaskDetails() {
       cardStyle={{
         padding: TBSpacing.large,
       }}>
-      <TBHeader title="On Progress" />
+      <TBHeader title={params?.title} hideBtn />
       <FlatList
-        data={DATA}
+        data={allFilteredData}
         renderItem={renderItemForProgreess}
-        keyExtractor={item => item}
+        keyExtractor={item => item.id}
       />
     </TBCard>
   );

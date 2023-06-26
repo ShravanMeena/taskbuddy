@@ -12,11 +12,11 @@ import TBText from './TBText';
 import TBButton from './TBButton';
 import {useNavigation} from '@react-navigation/native';
 
-export default function TBHeader({title, btnText, screen}) {
+export default function TBHeader({title, btnText, screen, completed, hideBtn}) {
   const {navigate} = useNavigation();
 
   const navigateToTaskDetails = () => {
-    navigate(screen);
+    navigate(screen, {title, completed});
   };
 
   return (
@@ -24,19 +24,21 @@ export default function TBHeader({title, btnText, screen}) {
       <TBText fontSize={TBFontSize.xxxl} fontWeight={TBFontWeight.bold}>
         {title}
       </TBText>
-      <TBButton
-        onPress={navigateToTaskDetails}
-        width={TBComponentSize.buttonWidthXS}
-        backgroundColor={TBColors.transparent}
-        containerStyle={{
-          justifyContent: 'flex-end',
-        }}
-        titleStyle={{
-          fontSize: TBFontSize.xl,
-          color: TBColors.primary,
-        }}
-        title={btnText || 'See all'}
-      />
+      {!hideBtn && (
+        <TBButton
+          onPress={navigateToTaskDetails}
+          width={TBComponentSize.buttonWidthXS}
+          backgroundColor={TBColors.transparent}
+          containerStyle={{
+            justifyContent: 'flex-end',
+          }}
+          titleStyle={{
+            fontSize: TBFontSize.xl,
+            color: TBColors.primary,
+          }}
+          title={btnText || 'See all'}
+        />
+      )}
     </TBCard>
   );
 }
