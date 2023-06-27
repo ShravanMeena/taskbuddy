@@ -6,6 +6,7 @@ import TaskProgressCard from '../../components/generic/TaskProgressCard';
 import {FlatList} from 'react-native';
 import {TBSpacing} from '../../theme/TBTheme';
 import {useSelector} from 'react-redux';
+import TBText from '../../components/atoms/TBText';
 
 export default function TaskDetails({route}) {
   const {tasks} = useSelector(state => state.todoReducer);
@@ -30,11 +31,17 @@ export default function TaskDetails({route}) {
         padding: TBSpacing.large,
       }}>
       <TBHeader title={params?.title} hideBtn />
-      <FlatList
-        data={allFilteredData}
-        renderItem={renderItemForProgreess}
-        keyExtractor={item => item.id}
-      />
+      {allFilteredData.length > 0 ? (
+        <FlatList
+          data={allFilteredData}
+          renderItem={renderItemForProgreess}
+          keyExtractor={item => item.id}
+        />
+      ) : (
+        <TBCard center>
+          <TBText>No Task here</TBText>
+        </TBCard>
+      )}
     </TBCard>
   );
 }

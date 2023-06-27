@@ -4,19 +4,10 @@
 import * as React from 'react';
 import {StatusBar} from 'react-native';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
-import {
-  TBColors,
-  TBFontSize,
-  TBFontWeight,
-  TBSpacing,
-} from './src/theme/TBTheme';
+import {TBColors} from './src/theme/TBTheme';
 import {CoreNavigation} from './src/navigation';
 import {Provider} from 'react-redux';
 import {store} from './src/redux/Store';
-import TBModal from './src/components/atoms/TBModal';
-import TBCard from './src/components/atoms/TBCard';
-import TBText from './src/components/atoms/TBText';
-import TBSpacer from './src/components/atoms/TBSpacer';
 
 function App() {
   return (

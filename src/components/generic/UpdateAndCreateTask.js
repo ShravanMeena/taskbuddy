@@ -119,7 +119,7 @@ const UpdateAndCreateTask = ({closeModal}) => {
       <TBSpacer />
       <TBCard row spaceBetween>
         <TBButton
-          title={readTask ? 'UPDATE TASK' : 'CREATE TASK'}
+          title={readTask ? 'UPDATE TASK' : 'CREATE NEW TASK'}
           onPress={createTaskHandler}
         />
 

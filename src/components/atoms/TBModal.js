@@ -21,7 +21,7 @@ const TBModal = ({children, task, renderComponent}) => {
   const dispatch = useDispatch();
 
   const setTaskForUpdate = () => {
-    task && dispatch(readByIdTaskAction(task));
+    !renderComponent && dispatch(readByIdTaskAction(task));
   };
 
   return (

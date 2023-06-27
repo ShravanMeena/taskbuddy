@@ -32,8 +32,10 @@ export default function HomeScreen() {
           <TBHeader
             title="On Progress"
             completed={false}
+            hideBtn={onGoingTasks.length <= 1}
             screen={ScreensName.TaskDetails}
           />
+
           <TBCard pLeft={TBSpacing.medium}>
             {onGoingTasks?.length > 0 ? (
               <FlatList
@@ -53,6 +55,7 @@ export default function HomeScreen() {
           <TBHeader
             title="Completed"
             completed
+            hideBtn={completedTasks.length <= 1}
             screen={ScreensName.TaskDetails}
           />
           <TBCard pLeft={TBSpacing.medium} pRight={TBSpacing.medium}>
@@ -64,7 +67,7 @@ export default function HomeScreen() {
               />
             ) : (
               <TBCard center>
-                <TBText>No On completed Tasks</TBText>
+                <TBText>No Completed Tasks</TBText>
               </TBCard>
             )}
           </TBCard>
