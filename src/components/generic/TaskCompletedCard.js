@@ -11,6 +11,7 @@ import {
 import TBText from '../atoms/TBText';
 import TBDivider from '../atoms/TBDivider';
 import TBModal from './TBModal';
+import {TBPriorityColor} from '../../constants/TBConstants';
 
 export default function TaskCompletedCard({task}) {
   return (
@@ -23,7 +24,7 @@ export default function TaskCompletedCard({task}) {
         <TBCard
           cardStyle={{
             width: TBComponentSize.iconHeightS,
-            backgroundColor: '#ffe8c7',
+            backgroundColor: TBPriorityColor[task.priority],
           }}
         />
         <TBCard
@@ -31,6 +32,7 @@ export default function TaskCompletedCard({task}) {
             padding: TBSpacing.large,
           }}>
           <TBText
+            numberOfLines={1}
             fontSize={TBFontSize.xxxl}
             fontWeight={TBFontWeight.semibold}
             style={{
@@ -38,7 +40,9 @@ export default function TaskCompletedCard({task}) {
             }}>
             {task.title}
           </TBText>
-          <TBText fontSize={TBFontSize.large}>{task.description}</TBText>
+          <TBText numberOfLines={2} fontSize={TBFontSize.large}>
+            {task.description}
+          </TBText>
           <TBDivider
             mTop={TBSpacing.small}
             mBottom={TBSpacing.small}

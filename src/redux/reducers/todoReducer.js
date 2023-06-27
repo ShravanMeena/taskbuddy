@@ -1,3 +1,4 @@
+import {dummyTasksData} from '../../models/dummyTasksData';
 import {
   CREATE_TASK,
   DELETE_TASK,
@@ -7,7 +8,7 @@ import {
 } from '../types';
 
 const initialState = {
-  tasks: [],
+  tasks: dummyTasksData,
   readTask: null,
 };
 

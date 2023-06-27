@@ -25,6 +25,7 @@ const TBText = ({
   onPress,
   backgroundColor,
   regular,
+  numberOfLines,
 }) => {
   const getFontFamily = () => {
     if (semibold) {
@@ -43,6 +44,7 @@ const TBText = ({
 
   return (
     <Text
+      numberOfLines={numberOfLines}
       allowFontScaling={false}
       style={{
         fontStyle: fontStyle || 'normal',

@@ -12,6 +12,7 @@ import TBText from '../atoms/TBText';
 import TBSpacer from '../atoms/TBSpacer';
 import TBDivider from '../atoms/TBDivider';
 import TBModal from './TBModal';
+import {TBPriorityColor} from '../../constants/TBConstants';
 
 export default function TaskProgressCard({task}) {
   return (
@@ -23,7 +24,10 @@ export default function TaskProgressCard({task}) {
           borderTopLeftRadius: TBSpacing.medium,
           borderTopRightRadius: TBSpacing.medium,
         }}>
-        <TBText fontSize={TBFontSize.xxxl} fontWeight={TBFontWeight.semibold}>
+        <TBText
+          numberOfLines={1}
+          fontSize={TBFontSize.xxxl}
+          fontWeight={TBFontWeight.semibold}>
           {task.title}
         </TBText>
         <TBSpacer />
@@ -38,7 +42,9 @@ export default function TaskProgressCard({task}) {
         <TBText fontSize={TBFontSize.large} color={TBColors.lightGreyText}>
           Description:
         </TBText>
-        <TBText fontSize={TBFontSize.large}>{task.description}</TBText>
+        <TBText numberOfLines={2} fontSize={TBFontSize.large}>
+          {task.description}
+        </TBText>
         <TBSpacer />
         <TBCard row spaceBetween>
           <TBCard>
@@ -62,7 +68,7 @@ export default function TaskProgressCard({task}) {
       <TBCard
         cardStyle={{
           height: TBComponentSize.iconHeightS,
-          backgroundColor: '#ffe8c7',
+          backgroundColor: TBPriorityColor[task.priority],
           borderBottomLeftRadius: TBSpacing.medium,
           borderBottomRightRadius: TBSpacing.medium,
         }}

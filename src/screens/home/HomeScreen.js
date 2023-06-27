@@ -4,7 +4,12 @@ import TBCard from '../../components/atoms/TBCard';
 import TBHeader from '../../components/atoms/TBHeader';
 import TBSpacer from '../../components/atoms/TBSpacer';
 import TaskProgressCard from '../../components/generic/TaskProgressCard';
-import {FlatList, ScrollView, Text} from 'react-native';
+import {
+  FlatList,
+  Keyboard,
+  ScrollView,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import {
   TBColors,
   TBComponentSize,
@@ -47,19 +52,11 @@ export default function HomeScreen() {
   );
 
   return (
-    <ScrollView nestedScrollEnabled showsVerticalScrollIndicator={false}>
-      <TBModal>
-        <TBCard
-          center
-          cardStyle={{
-            backgroundColor: TBColors.primary,
-            padding: TBSpacing.medium,
-          }}>
-          <TBText fontSize={TBFontSize.large} color={TBColors.white}>
-            CREATE NEW
-          </TBText>
-        </TBCard>
-      </TBModal>
+    // <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <ScrollView
+      nestedScrollEnabled
+      showsVerticalScrollIndicator={false}
+      style={{zIndex: 1000}}>
       <TBSpacer />
       <TBCard>
         <TBHeader
@@ -92,5 +89,6 @@ export default function HomeScreen() {
         <TBSpacer />
       </TBCard>
     </ScrollView>
+    // </TouchableWithoutFeedback>
   );
 }

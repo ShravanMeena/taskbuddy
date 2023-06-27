@@ -14,6 +14,7 @@ import {TBColors, TBFontSize} from '../../theme/TBTheme';
 import TBSwitch from '../atoms/TBSwitch';
 import TBCard from '../atoms/TBCard';
 import TBText from '../atoms/TBText';
+import { generateUUID } from '../../utils/CommonUtils';
 
 const UpdateAndCreateTask = () => {
   const {readTask} = useSelector(state => state.todoReducer);
@@ -22,16 +23,19 @@ const UpdateAndCreateTask = () => {
   const [taskDescription, setTaskDescription] = useState(
     readTask?.description || '',
   );
-  const [taskCategory, setTaskCategory] = useState('general');
-  const [taskPriority, setTaskPriority] = useState('low');
+  const [taskCategory, setTaskCategory] = useState(readTask?.category || 'GENERAL');
+  const [taskPriority, setTaskPriority] = useState(readTask?.priority || 'LOW');
   const [completed, setCompleted] = useState(readTask?.completed || false);
 
   const dispatch = useDispatch();
-  const {tasks} = useSelector(state => state.todoReducer);
 
   const createTaskHandler = () => {
+    if (!taskTitle || !taskDescription) {
+      return;
+    }
+
     const newTask = {
-      id: readTask ? readTask.id : tasks.length + 1,
+      id: readTask ? readTask.id : generateUUID(),
       title: taskTitle,
       description: taskDescription,
       priority: taskPriority,
@@ -89,11 +93,13 @@ const UpdateAndCreateTask = () => {
         onPress={createTaskHandler}
       />
       <TBSpacer />
-      <TBButton
-        backgroundColor={TBColors.redText}
-        title="DELETE TASK"
-        onPress={deleteTaskHandler}
-      />
+      {readTask && (
+        <TBButton
+          backgroundColor={TBColors.redText}
+          title="DELETE TASK"
+          onPress={deleteTaskHandler}
+        />
+      )}
     </>
   );
 };

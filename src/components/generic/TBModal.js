@@ -30,7 +30,10 @@ const TBModal = ({children, task}) => {
         onRequestClose={() => {
           setModalVisible(!modalVisible);
         }}>
-        <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
+        <TouchableWithoutFeedback
+          onPress={() => {
+            setModalVisible(false);
+          }}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <ScrollView>
