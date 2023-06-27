@@ -22,6 +22,8 @@ import TBModal from '../atoms/TBModal';
 import CategoriesList from './components/CategoriesList';
 import PrioritiesList from './components/PrioritiesList';
 import TBDivider from '../atoms/TBDivider';
+import {Alert} from 'react-native';
+import LogHelper from '../../utils/LogHelper';
 
 const UpdateAndCreateTask = ({closeModal}) => {
   const {readTask} = useSelector(state => state.todoReducer);
@@ -36,13 +38,12 @@ const UpdateAndCreateTask = ({closeModal}) => {
 
   const dispatch = useDispatch();
 
-  const createTaskHandler = () => {
+  const createAndUpdateTaskHandler = duplicate => {
     if (!taskTitle || !taskDescription) {
       return;
     }
-
     const newTask = {
-      id: readTask ? readTask.id : generateUUID(),
+      id: readTask && !duplicate ? readTask.id : generateUUID(),
       title: taskTitle,
       description: taskDescription,
       priority: taskPriority,
@@ -50,7 +51,7 @@ const UpdateAndCreateTask = ({closeModal}) => {
       completed,
     };
 
-    if (readTask) {
+    if (readTask && !duplicate) {
       dispatch(updateTaskAction(readTask.id, newTask));
     } else {
       dispatch(createTaskAction(newTask));
@@ -66,8 +67,20 @@ const UpdateAndCreateTask = ({closeModal}) => {
   };
 
   const deleteTaskHandler = () => {
-    dispatch(deleteTaskAction(readTask.id));
-    closeModal();
+    Alert.alert('Do you want to delete?', '', [
+      {
+        text: 'Cancel',
+        onPress: () => LogHelper.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {
+        text: 'CONFIRM',
+        onPress: () => {
+          dispatch(deleteTaskAction(readTask.id));
+          closeModal();
+        },
+      },
+    ]);
   };
 
   return (
@@ -120,15 +133,23 @@ const UpdateAndCreateTask = ({closeModal}) => {
       <TBCard row spaceBetween>
         <TBButton
           title={readTask ? 'UPDATE TASK' : 'CREATE NEW TASK'}
-          onPress={createTaskHandler}
+          onPress={createAndUpdateTaskHandler}
         />
 
         {readTask && (
-          <TBButton
-            backgroundColor={TBColors.redText}
-            title="DELETE"
-            onPress={deleteTaskHandler}
-          />
+          <>
+            <TBButton
+              backgroundColor={TBColors.green}
+              title="DUPLICATE TASK"
+              onPress={() => createAndUpdateTaskHandler(true)}
+            />
+
+            <TBButton
+              backgroundColor={TBColors.redText}
+              title="DELETE"
+              onPress={deleteTaskHandler}
+            />
+          </>
         )}
       </TBCard>
     </TBCard>
