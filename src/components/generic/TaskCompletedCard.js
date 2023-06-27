@@ -10,7 +10,7 @@ import {
 } from '../../theme/TBTheme';
 import TBText from '../atoms/TBText';
 import TBDivider from '../atoms/TBDivider';
-import TBModal from './TBModal';
+import TBModal from '../atoms/TBModal';
 import {TBPriorityColor} from '../../constants/TBConstants';
 
 export default function TaskCompletedCard({task}) {

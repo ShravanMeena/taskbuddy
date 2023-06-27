@@ -9,7 +9,6 @@ import {
 import {
   TBColors,
   TBComponentSize,
-  TBFontFamily,
   TBFontSize,
   TBSpacing,
 } from '../../theme/TBTheme';
@@ -44,7 +43,7 @@ const TBButton = ({
     <TBText
       semibold
       color={
-        titleColor ? titleColor : disabled ? TBColors.white : TBColors.black
+        titleColor ? titleColor : disabled ? TBColors.white : TBColors.white
       }
       //@ts-ignore
       style={{...styles.titleStyle, ...titleStyle}}>
@@ -123,7 +122,7 @@ const {width} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
   container: {
-    width: width - TBSpacing.small,
+    // width: width - TBSpacing.small,
     height: 3 * TBSpacing.medium,
     alignItems: 'center',
     justifyContent: 'center',

@@ -6,19 +6,22 @@ import {
   TouchableWithoutFeedback,
   ScrollView,
   TouchableOpacity,
+  Pressable,
 } from 'react-native';
-import UpdateAndCreateTask from './UpdateAndCreateTask';
+import UpdateAndCreateTask from '../generic/UpdateAndCreateTask';
 import {TBColors, TBOpacity, TBSpacing} from '../../theme/TBTheme';
 import {useDispatch} from 'react-redux';
 import {readByIdTaskAction} from '../../redux/actions/todoActions';
+import TBDivider from './TBDivider';
+import TBSpacer from './TBSpacer';
 
-const TBModal = ({children, task}) => {
+const TBModal = ({children, task, renderComponent}) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const dispatch = useDispatch();
 
   const setTaskForUpdate = () => {
-    dispatch(readByIdTaskAction(task));
+    task && dispatch(readByIdTaskAction(task));
   };
 
   return (
@@ -35,11 +38,25 @@ const TBModal = ({children, task}) => {
             setModalVisible(false);
           }}>
           <View style={styles.centeredView}>
-            <View style={styles.modalView}>
+            <Pressable style={styles.modalView}>
+              <TBSpacer />
+              <TBDivider
+                color={TBColors.bleachGrey}
+                height={TBSpacing.xs}
+                width={TBSpacing.xxl}
+              />
+              <TBSpacer />
               <ScrollView>
-                <UpdateAndCreateTask />
+                {renderComponent ? (
+                  renderComponent()
+                ) : (
+                  <UpdateAndCreateTask
+                    closeModal={() => setModalVisible(false)}
+                  />
+                )}
               </ScrollView>
-            </View>
+              <TBSpacer />
+            </Pressable>
           </View>
         </TouchableWithoutFeedback>
       </Modal>
@@ -66,8 +83,7 @@ const styles = StyleSheet.create({
     backgroundColor: TBColors.white,
     // borderTopLeftRadius: TBSpacing.xl,
     // borderTopRightRadius: TBSpacing.xl,
-    paddingHorizontal: TBSpacing.medium,
-    paddingVertical: TBSpacing.large,
+    paddingHorizontal: TBSpacing.large,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {

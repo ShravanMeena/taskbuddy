@@ -212,7 +212,7 @@ export const TBColors = {
   black: '#000000',
   white: '#FFFFFF',
   transparent: 'transparent',
-  rgbaTransparent: 'rgba(0,0,0,0.6)',
+  rgbaTransparent: 'rgba(0,0,0,0.7)',
   white90: '#FFFFFF90',
   white10: '#434248',
   white12: '#FFFFFF12',

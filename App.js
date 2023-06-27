@@ -11,10 +11,9 @@ import {
   TBSpacing,
 } from './src/theme/TBTheme';
 import {CoreNavigation} from './src/navigation';
-
 import {Provider} from 'react-redux';
 import {store} from './src/redux/Store';
-import TBModal from './src/components/generic/TBModal';
+import TBModal from './src/components/atoms/TBModal';
 import TBCard from './src/components/atoms/TBCard';
 import TBText from './src/components/atoms/TBText';
 import TBSpacer from './src/components/atoms/TBSpacer';

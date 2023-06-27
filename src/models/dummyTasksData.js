@@ -24,3 +24,18 @@ export const dummyTasksData = [
     category: 'EXERCISE',
   },
 ];
+
+export const prioritiesList = [
+  {
+    id: 1,
+    name: 'LOW',
+  },
+  {
+    id: 2,
+    name: 'MEDIUM',
+  },
+  {
+    id: 3,
+    name: 'HIGH',
+  },
+];
