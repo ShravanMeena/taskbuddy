@@ -25,27 +25,6 @@ function App() {
       <SafeAreaView style={{flex: 1, backgroundColor: TBColors.smokeWhite}}>
         <Provider store={store}>
           <CoreNavigation />
-
-          <TBModal>
-            <TBCard center>
-              <TBCard
-                center
-                cardStyle={{
-                  backgroundColor: TBColors.primary,
-                  padding: TBSpacing.medium,
-                  borderRadius: TBSpacing.llx,
-                  width: '80%',
-                }}>
-                <TBText
-                  fontSize={TBFontSize.xxxl}
-                  fontWeight={TBFontWeight.bolder}
-                  color={TBColors.white}>
-                  CREATE NEW TASK
-                </TBText>
-              </TBCard>
-            </TBCard>
-            <TBSpacer />
-          </TBModal>
         </Provider>
       </SafeAreaView>
     </SafeAreaProvider>

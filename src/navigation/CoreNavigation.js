@@ -19,15 +19,6 @@ function App() {
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator>
         <Stack.Screen
-          name={ScreensName.Home}
-          component={HomeScreen}
-          options={{
-            headerShown: false,
-            transitionSpec: {open: openConfig, close: closeConfig},
-            cardStyleInterpolator: forFadeAnim,
-          }}
-        />
-        <Stack.Screen
           name={ScreensName.Landing}
           component={Landing}
           options={{
@@ -36,6 +27,17 @@ function App() {
             cardStyleInterpolator: forFadeAnim,
           }}
         />
+
+        <Stack.Screen
+          name={ScreensName.Home}
+          component={HomeScreen}
+          options={{
+            headerShown: false,
+            transitionSpec: {open: openConfig, close: closeConfig},
+            cardStyleInterpolator: forFadeAnim,
+          }}
+        />
+
         <Stack.Screen
           name={ScreensName.TaskDetails}
           component={TaskDetails}

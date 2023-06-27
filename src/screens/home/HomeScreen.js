@@ -12,6 +12,7 @@ import {
   renderItemForCompleted,
   renderItemForProgreess,
 } from './components/renderItems';
+import CreateNewTaskButton from '../../components/generic/CreateNewTaskButton';
 
 export default function HomeScreen() {
   const {tasks} = useSelector(state => state.todoReducer);
@@ -20,55 +21,58 @@ export default function HomeScreen() {
   let onGoingTasks = tasks.filter(todo => !todo.completed);
 
   return (
-    // <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-    <ScrollView
-      nestedScrollEnabled
-      showsVerticalScrollIndicator={false}
-      style={{zIndex: 1000}}>
-      <TBSpacer />
-      <TBCard>
-        <TBHeader
-          title="On Progress"
-          completed={false}
-          screen={ScreensName.TaskDetails}
-        />
-        <TBCard pLeft={TBSpacing.medium}>
-          {onGoingTasks?.length > 0 ? (
-            <FlatList
-              data={onGoingTasks}
-              showsHorizontalScrollIndicator={false}
-              horizontal
-              renderItem={renderItemForProgreess}
-              keyExtractor={item => item.id}
-            />
-          ) : (
-            <TBCard center>
-              <TBText>No On Going Tasks</TBText>
-            </TBCard>
-          )}
-        </TBCard>
+    <>
+      {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
+      <ScrollView
+        nestedScrollEnabled
+        showsVerticalScrollIndicator={false}
+        style={{zIndex: 1000}}>
         <TBSpacer />
-        <TBHeader
-          title="Completed"
-          completed
-          screen={ScreensName.TaskDetails}
-        />
-        <TBCard pLeft={TBSpacing.medium} pRight={TBSpacing.medium}>
-          {completedTasks.length > 0 ? (
-            <FlatList
-              data={completedTasks}
-              renderItem={renderItemForCompleted}
-              keyExtractor={item => item.id}
-            />
-          ) : (
-            <TBCard center>
-              <TBText>No On completed Tasks</TBText>
-            </TBCard>
-          )}
+        <TBCard>
+          <TBHeader
+            title="On Progress"
+            completed={false}
+            screen={ScreensName.TaskDetails}
+          />
+          <TBCard pLeft={TBSpacing.medium}>
+            {onGoingTasks?.length > 0 ? (
+              <FlatList
+                data={onGoingTasks}
+                showsHorizontalScrollIndicator={false}
+                horizontal
+                renderItem={renderItemForProgreess}
+                keyExtractor={item => item.id}
+              />
+            ) : (
+              <TBCard center>
+                <TBText>No On Going Tasks</TBText>
+              </TBCard>
+            )}
+          </TBCard>
+          <TBSpacer />
+          <TBHeader
+            title="Completed"
+            completed
+            screen={ScreensName.TaskDetails}
+          />
+          <TBCard pLeft={TBSpacing.medium} pRight={TBSpacing.medium}>
+            {completedTasks.length > 0 ? (
+              <FlatList
+                data={completedTasks}
+                renderItem={renderItemForCompleted}
+                keyExtractor={item => item.id}
+              />
+            ) : (
+              <TBCard center>
+                <TBText>No On completed Tasks</TBText>
+              </TBCard>
+            )}
+          </TBCard>
+          <TBSpacer />
         </TBCard>
-        <TBSpacer />
-      </TBCard>
-    </ScrollView>
+      </ScrollView>
+      <CreateNewTaskButton />
+    </>
     // </TouchableWithoutFeedback>
   );
 }
