@@ -50,7 +50,7 @@ export default function TaskCompletedCard({task}) {
             width={'100%'}
             height={1}
           />
-          <TBText fontSize={TBFontSize.xl}>Friday, 09 July 2023</TBText>
+          <TBText fontSize={TBFontSize.xl}>{task.selectedDate}</TBText>
         </TBCard>
       </TBCard>
     </TBModal>

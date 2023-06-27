@@ -31,7 +31,7 @@ export default function TaskProgressCard({task}) {
           {task.title}
         </TBText>
         <TBSpacer />
-        <TBText fontSize={TBFontSize.xl}>Friday, 09 July 2023</TBText>
+        <TBText fontSize={TBFontSize.xl}>{task.selectedDate}</TBText>
         <TBDivider
           mTop={TBSpacing.large}
           mBottom={TBSpacing.large}

@@ -1,95 +1,210 @@
-import React, {useState} from 'react';
-import {View, Button, Modal, TextInput} from 'react-native';
+/* eslint-disable react/no-unstable-nested-components */
+import React, {useEffect, useState} from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  StyleSheet,
+} from 'react-native';
+import TBModal from '../atoms/TBModal';
+import TBCard from '../atoms/TBCard';
+import {TBComponentSize, TBSpacing} from '../../theme/TBTheme';
+import {
+  dates,
+  hours,
+  minutes,
+  months,
+  monthsShort,
+  years,
+} from '../../models/monthData';
+import TBSpacer from '../atoms/TBSpacer';
+import TBButton from '../atoms/TBButton';
 
-const CustomDateTimePicker = () => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [selectedDate, setSelectedDate] = useState('');
-  const [selectedMonth, setSelectedMonth] = useState('');
-  const [selectedTime, setSelectedTime] = useState('');
-  const [selectedAMPM, setSelectedAMPM] = useState('');
+const TBDatePickerAndroid = ({onPress}) => {
+  const [selectedYear, setSelectedYear] = useState(2023);
+  const [selectedMonth, setSelectedMonth] = useState('Jan');
+  const [selectedDate, setSelectedDate] = useState('01');
+  const [selectedHour, setSelectedHour] = useState('00');
+  const [selectedMinute, setSelectedMinute] = useState('00');
 
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
+  const Option = ({value, selectedValue, onSelect}) => (
+    <TouchableOpacity onPress={() => onSelect(value)}>
+      <Text
+        style={value === selectedValue ? styles.selected : styles.unselected}>
+        {value}
+      </Text>
+    </TouchableOpacity>
+  );
 
-  const handleConfirm = () => {
-    // Handle the selected date and time
-    const formattedDate = `${selectedDate} ${selectedMonth}`;
-    const formattedTime =
-      selectedTime !== '' ? `${selectedTime} ${selectedAMPM}` : '';
-    const selectedDateTime = `${formattedDate} ${formattedTime}`;
-
-    console.log(selectedDateTime);
-
-    // Close the date-time picker
-    setModalVisible(false);
+  const saveTimeAndDate = () => {
+    let timeDate = `${selectedDate} ${selectedMonth}, ${selectedHour}:${selectedMinute}, ${selectedYear}`;
+    onPress(timeDate);
   };
 
-  const renderMonthOptions = () => {
-    return months.map(month => (
-      <Button
-        key={month}
-        title={month}
-        onPress={() => setSelectedMonth(month)}
-      />
-    ));
-  };
+  useEffect(() => {
+    saveTimeAndDate();
+  }, [selectedDate, selectedHour, selectedMinute, selectedMonth, selectedYear]);
 
   return (
     <View>
-      <Button
-        title="Select Date & Time"
-        onPress={() => setModalVisible(true)}
-      />
+      <TBModal
+        renderComponent={() => (
+          <TBCard>
+            <TBCard
+              row
+              spaceBetween
+              cardStyle={{
+                paddingVertical: TBSpacing.large,
+              }}>
+              <TBCard
+                cardStyle={{
+                  marginLeft: TBSpacing.large,
+                }}>
+                <Text>Year</Text>
+                <TBSpacer />
+                <ScrollView
+                  showsVerticalScrollIndicator={false}
+                  style={{
+                    height: TBComponentSize.cardHeightL,
+                  }}>
+                  {years.map((year, index) => (
+                    <Option
+                      key={index}
+                      value={year}
+                      selectedValue={selectedYear}
+                      onSelect={setSelectedYear}
+                    />
+                  ))}
+                </ScrollView>
+              </TBCard>
+              <TBCard
+                cardStyle={{
+                  marginLeft: TBSpacing.large,
+                }}>
+                <Text>Month</Text>
+                <TBSpacer />
 
-      <Modal
-        visible={modalVisible}
-        animationType="slide"
-        transparent={true}
-        onRequestClose={() => setModalVisible(false)}>
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <View style={{backgroundColor: 'white', padding: 16}}>
-            <TextInput
-              placeholder="Select Date"
-              value={selectedDate}
-              onChangeText={text => setSelectedDate(text)}
-            />
+                <ScrollView
+                  showsVerticalScrollIndicator={false}
+                  style={{
+                    height: TBComponentSize.cardHeightS,
+                  }}>
+                  {months.map((month, index) => (
+                    <Option
+                      key={index}
+                      value={monthsShort[month]}
+                      selectedValue={selectedMonth}
+                      onSelect={setSelectedMonth}
+                    />
+                  ))}
+                </ScrollView>
+              </TBCard>
 
-            <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              {renderMonthOptions()}
-            </View>
+              <TBCard
+                cardStyle={{
+                  marginLeft: TBSpacing.large,
+                }}>
+                <Text>Date</Text>
+                <TBSpacer />
 
-            <TextInput
-              placeholder="Select Time"
-              value={selectedTime}
-              onChangeText={text => setSelectedTime(text)}
-              keyboardType="numeric"
-            />
+                <ScrollView
+                  showsVerticalScrollIndicator={false}
+                  style={{
+                    height: TBComponentSize.cardHeightS,
+                  }}>
+                  {dates.map((date, index) => (
+                    <Option
+                      key={index}
+                      value={date}
+                      selectedValue={selectedDate}
+                      onSelect={setSelectedDate}
+                    />
+                  ))}
+                </ScrollView>
+              </TBCard>
 
-            <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Button title="AM" onPress={() => setSelectedAMPM('AM')} />
-              <Button title="PM" onPress={() => setSelectedAMPM('PM')} />
-            </View>
+              <TBCard
+                cardStyle={{
+                  marginLeft: TBSpacing.large,
+                }}>
+                <Text>Hour</Text>
+                <TBSpacer />
 
-            <Button title="Confirm" onPress={handleConfirm} />
-          </View>
-        </View>
-      </Modal>
+                <ScrollView
+                  showsVerticalScrollIndicator={false}
+                  style={{
+                    height: TBComponentSize.cardHeightS,
+                  }}>
+                  {hours.map((hour, index) => (
+                    <Option
+                      key={index}
+                      value={hour}
+                      selectedValue={selectedHour}
+                      onSelect={setSelectedHour}
+                    />
+                  ))}
+                </ScrollView>
+              </TBCard>
+
+              <TBCard
+                cardStyle={{
+                  marginLeft: TBSpacing.large,
+                }}>
+                <Text>Minute</Text>
+                <TBSpacer />
+
+                <ScrollView
+                  showsVerticalScrollIndicator={false}
+                  style={{
+                    height: TBComponentSize.cardHeightS,
+                  }}>
+                  {minutes.map((minute, index) => (
+                    <Option
+                      key={index}
+                      value={minute}
+                      selectedValue={selectedMinute}
+                      onSelect={setSelectedMinute}
+                    />
+                  ))}
+                </ScrollView>
+              </TBCard>
+            </TBCard>
+          </TBCard>
+        )}>
+        <TBButton title={'Select Date And Time'} disabled />
+      </TBModal>
     </View>
   );
 };
 
-export default CustomDateTimePicker;
+const styles = StyleSheet.create({
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+  },
+  selected: {
+    fontSize: 20,
+    color: 'black',
+  },
+  unselected: {
+    fontSize: 18,
+    color: 'gray',
+  },
+});
+
+export default TBDatePickerAndroid;

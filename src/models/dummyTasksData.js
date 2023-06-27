@@ -6,6 +6,7 @@ export const dummyTasksData = [
     completed: true,
     priority: 'HIGH',
     category: 'EDUCATION',
+    selectedDate: '09 July, 06:50, 2023',
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ export const dummyTasksData = [
     completed: false,
     priority: 'LOW',
     category: 'Personal',
+    selectedDate: '09 July, 06:50, 2023',
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ export const dummyTasksData = [
     completed: false,
     priority: 'MEDIUM',
     category: 'EXERCISE',
+    selectedDate: '09 July, 06:50, 2023',
   },
 ];
 

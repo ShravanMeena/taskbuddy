@@ -24,6 +24,7 @@ import PrioritiesList from './components/PrioritiesList';
 import TBDivider from '../atoms/TBDivider';
 import {Alert} from 'react-native';
 import LogHelper from '../../utils/LogHelper';
+import TBDatePickerAndroid from './TBDatePickerAndroid';
 
 const UpdateAndCreateTask = ({closeModal}) => {
   const {readTask} = useSelector(state => state.todoReducer);
@@ -35,6 +36,9 @@ const UpdateAndCreateTask = ({closeModal}) => {
   const [taskCategory, setTaskCategory] = useState(readTask?.category);
   const [taskPriority, setTaskPriority] = useState(readTask?.priority);
   const [completed, setCompleted] = useState(readTask?.completed || false);
+  const [selectedDate, setSelectedDate] = useState(
+    readTask?.selectedDate || '',
+  );
 
   const dispatch = useDispatch();
 
@@ -49,6 +53,7 @@ const UpdateAndCreateTask = ({closeModal}) => {
       priority: taskPriority,
       category: taskCategory,
       completed,
+      selectedDate,
     };
 
     if (readTask && !duplicate) {
@@ -122,6 +127,10 @@ const UpdateAndCreateTask = ({closeModal}) => {
           <TBButton title={taskCategory || 'Categories'} disabled />
         </TBModal>
       </TBCard>
+      <TBSpacer />
+
+      {/* <TBText>Date: {selectedDate}</TBText> */}
+      <TBDatePickerAndroid onPress={e => setSelectedDate(e)} />
 
       <TBSpacer />
       <TBDivider
