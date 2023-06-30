@@ -13,6 +13,7 @@ import TBSwitch from './TBSwitch';
 import TBText from './TBText';
 import TBDatePickerAndroid from './TBDatePickerAndroid';
 import TBEmptyCard from './TBEmptyCard';
+import TBRadio from './TBRadio';
 
 export {
   TBSwitch,
@@ -29,5 +30,6 @@ export {
   TBCard,
   TBButton,
   TBDatePickerAndroid,
-  TBEmptyCard
+  TBEmptyCard,
+  TBRadio,
 };

@@ -1,5 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+import {useDispatch} from 'react-redux';
+
 import {
   TBColors,
   TBComponentSize,
@@ -10,10 +12,16 @@ import {
 
 import {TBPriorityColor, TBStrings} from '@constants/TBConstants';
 
-import {TBModal, TBDivider, TBText, TBCard, TBSpacer} from '../atoms';
+import {TBModal, TBDivider, TBText, TBCard, TBSpacer, TBRadio} from '../atoms';
+import {updateTaskAction} from '@redux/actions/todoActions';
 
 export default function TaskProgressCard({task}) {
   let {fullDate} = task.selectedDate;
+  const dispatch = useDispatch();
+  const updateStatus = () => {
+    let newTask = {...task, completed: true};
+    dispatch(updateTaskAction(task.id, newTask));
+  };
 
   return (
     <TBModal task={task}>
@@ -24,12 +32,16 @@ export default function TaskProgressCard({task}) {
           borderTopLeftRadius: TBSpacing.medium,
           borderTopRightRadius: TBSpacing.medium,
         }}>
-        <TBText
-          numberOfLines={1}
-          fontSize={TBFontSize.xxxl}
-          fontWeight={TBFontWeight.semibold}>
-          {task.title}
-        </TBText>
+        <TBCard row spaceBetween>
+          <TBText
+            numberOfLines={1}
+            fontSize={TBFontSize.xxxl}
+            fontWeight={TBFontWeight.semibold}>
+            {task.title}
+          </TBText>
+          <TBRadio onPress={updateStatus} />
+        </TBCard>
+
         <TBSpacer />
         <TBText fontSize={TBFontSize.xl}>{fullDate}</TBText>
         <TBDivider

@@ -10,10 +10,18 @@ import {
 
 import {TBPriorityColor} from '@constants/TBConstants';
 
-import {TBModal, TBDivider, TBText, TBCard} from '../atoms';
+import {TBModal, TBDivider, TBText, TBCard, TBRadio} from '../atoms';
+import {useDispatch} from 'react-redux';
+import {updateTaskAction} from '../../redux/actions/todoActions';
 
 export default function TaskCompletedCard({task}) {
   let {fullDate} = task.selectedDate;
+
+  const dispatch = useDispatch();
+  const updateStatus = () => {
+    let newTask = {...task, completed: false};
+    dispatch(updateTaskAction(task.id, newTask));
+  };
 
   return (
     <TBModal task={task}>
@@ -31,16 +39,21 @@ export default function TaskCompletedCard({task}) {
         <TBCard
           cardStyle={{
             padding: TBSpacing.large,
+            width: '100%',
           }}>
-          <TBText
-            numberOfLines={1}
-            fontSize={TBFontSize.xxxl}
-            fontWeight={TBFontWeight.semibold}
-            style={{
-              textDecorationLine: 'line-through',
-            }}>
-            {task.title}
-          </TBText>
+          <TBCard row spaceBetween>
+            <TBText
+              numberOfLines={1}
+              fontSize={TBFontSize.xxxl}
+              fontWeight={TBFontWeight.semibold}
+              style={{
+                textDecorationLine: 'line-through',
+              }}>
+              {task.title}
+            </TBText>
+            <TBRadio isCompleted onPress={updateStatus} />
+          </TBCard>
+
           <TBText numberOfLines={2} fontSize={TBFontSize.large}>
             {task.description}
           </TBText>
