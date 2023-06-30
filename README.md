@@ -23,6 +23,7 @@ The TaskBuddy App is built using the React Native CLI. It follows a modular code
 
 - Redux: for efficient state management.
 - React Navigation: for seamless navigation between screens.
+- babel-plugin-module-resolver: for Using Absolute Paths
 
 ## Folder Structure
 
