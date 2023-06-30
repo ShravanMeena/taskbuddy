@@ -1,7 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
-import TBCard from '../../../components/atoms/TBCard';
-import TaskCompletedCard from '../../../components/generic/TaskCompletedCard';
-import TaskProgressCard from '../../../components/generic/TaskProgressCard';
+import {TBCard} from '../../../components/atoms';
+import {TaskCompletedCard, TaskProgressCard} from '../../../components/generic';
 import {TBComponentSize, TBSpacing} from '../../../theme/TBTheme';
 
 export const renderItemForProgreess = ({item}) => (

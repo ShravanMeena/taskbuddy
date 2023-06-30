@@ -1,6 +1,18 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+
 import {TBStrings} from '../../constants/TBConstants';
+import {useNavigation} from '@react-navigation/native';
+import {ScreensName} from '../../constants/NavigationConstants';
+
+import {
+  TBButton,
+  TBCard,
+  TBImage,
+  TBSpacer,
+  TBText,
+} from '../../components/atoms';
+
 import {
   TBColors,
   TBComponentSize,
@@ -8,14 +20,6 @@ import {
   TBFontWeight,
   TBSpacing,
 } from '../../theme/TBTheme';
-
-import TBText from '../../components/atoms/TBText';
-import TBButton from '../../components/atoms/TBButton';
-import TBCard from '../../components/atoms/TBCard';
-import TBImage from '../../components/atoms/TBImage';
-import TBSpacer from '../../components/atoms/TBSpacer';
-import {useNavigation} from '@react-navigation/native';
-import {ScreensName} from '../../constants/NavigationConstants';
 
 const ToDoListPng = require('../../assets/images/to_do_list.png');
 

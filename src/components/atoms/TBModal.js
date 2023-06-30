@@ -8,12 +8,12 @@ import {
   TouchableOpacity,
   Pressable,
 } from 'react-native';
-import UpdateAndCreateTask from '../generic/UpdateAndCreateTask';
 import {TBColors, TBOpacity, TBSpacing} from '../../theme/TBTheme';
 import {useDispatch} from 'react-redux';
 import {readByIdTaskAction} from '../../redux/actions/todoActions';
-import TBDivider from './TBDivider';
 import TBSpacer from './TBSpacer';
+import TBDivider from './TBDivider';
+import {UpdateAndCreateTask} from '../generic';
 
 const TBModal = ({children, task, renderComponent}) => {
   const [modalVisible, setModalVisible] = useState(false);

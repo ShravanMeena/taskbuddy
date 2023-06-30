@@ -42,3 +42,23 @@ export const prioritiesList = [
     name: 'HIGH',
   },
 ];
+
+export const CategoriesListData = [
+  {
+    id: 1,
+    name: 'GENERAL',
+  },
+  {
+    id: 2,
+    name: 'HOME',
+  },
+  {
+    id: 3,
+    name: 'EDUCATION',
+  },
+
+  {
+    id: 4,
+    name: 'CODING',
+  },
+];

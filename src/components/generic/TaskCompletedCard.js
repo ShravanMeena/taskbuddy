@@ -14,6 +14,8 @@ import TBModal from '../atoms/TBModal';
 import {TBPriorityColor} from '../../constants/TBConstants';
 
 export default function TaskCompletedCard({task}) {
+  let {fullDate} = task.selectedDate;
+
   return (
     <TBModal task={task}>
       <TBCard
@@ -50,7 +52,7 @@ export default function TaskCompletedCard({task}) {
             width={'100%'}
             height={1}
           />
-          <TBText fontSize={TBFontSize.xl}>{task.selectedDate}</TBText>
+          <TBText fontSize={TBFontSize.xl}>{fullDate}</TBText>
         </TBCard>
       </TBCard>
     </TBModal>

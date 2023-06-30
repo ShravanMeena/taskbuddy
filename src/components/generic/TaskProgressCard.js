@@ -12,9 +12,11 @@ import TBText from '../atoms/TBText';
 import TBSpacer from '../atoms/TBSpacer';
 import TBDivider from '../atoms/TBDivider';
 import TBModal from '../atoms/TBModal';
-import {TBPriorityColor} from '../../constants/TBConstants';
+import {TBPriorityColor, TBStrings} from '../../constants/TBConstants';
 
 export default function TaskProgressCard({task}) {
+  let {fullDate} = task.selectedDate;
+
   return (
     <TBModal task={task}>
       <TBCard
@@ -31,7 +33,7 @@ export default function TaskProgressCard({task}) {
           {task.title}
         </TBText>
         <TBSpacer />
-        <TBText fontSize={TBFontSize.xl}>{task.selectedDate}</TBText>
+        <TBText fontSize={TBFontSize.xl}>{fullDate}</TBText>
         <TBDivider
           mTop={TBSpacing.large}
           mBottom={TBSpacing.large}
@@ -40,7 +42,7 @@ export default function TaskProgressCard({task}) {
           height={1}
         />
         <TBText fontSize={TBFontSize.large} color={TBColors.lightGreyText}>
-          Description:
+          {TBStrings.taskCardDescText}:
         </TBText>
         <TBText numberOfLines={2} fontSize={TBFontSize.large}>
           {task.description}
@@ -49,7 +51,7 @@ export default function TaskProgressCard({task}) {
         <TBCard row spaceBetween>
           <TBCard>
             <TBText fontSize={TBFontSize.large} color={TBColors.lightGreyText}>
-              Priority:
+              {TBStrings.taskCardPrioritText}:
             </TBText>
             <TBText fontSize={TBFontSize.large}>
               {task.priority?.toUpperCase()}
@@ -57,7 +59,7 @@ export default function TaskProgressCard({task}) {
           </TBCard>
           <TBCard>
             <TBText fontSize={TBFontSize.large} color={TBColors.lightGreyText}>
-              Category:
+              {TBStrings.taskCardCategoryText}:
             </TBText>
             <TBText fontSize={TBFontSize.large}>
               {task.category?.toUpperCase()}

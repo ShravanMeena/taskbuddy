@@ -7,8 +7,8 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
-import TBModal from '../atoms/TBModal';
-import TBCard from '../atoms/TBCard';
+import TBModal from './TBModal';
+import TBCard from './TBCard';
 import {TBComponentSize, TBSpacing} from '../../theme/TBTheme';
 import {
   dates,
@@ -18,15 +18,25 @@ import {
   monthsShort,
   years,
 } from '../../models/monthData';
-import TBSpacer from '../atoms/TBSpacer';
-import TBButton from '../atoms/TBButton';
+import TBSpacer from './TBSpacer';
+import TBButton from './TBButton';
 
-const TBDatePickerAndroid = ({onPress}) => {
-  const [selectedYear, setSelectedYear] = useState(2023);
-  const [selectedMonth, setSelectedMonth] = useState('Jan');
-  const [selectedDate, setSelectedDate] = useState('01');
-  const [selectedHour, setSelectedHour] = useState('00');
-  const [selectedMinute, setSelectedMinute] = useState('00');
+const TBDatePickerAndroid = ({onPress, activeDate}) => {
+  const [selectedYear, setSelectedYear] = useState(
+    activeDate?.selectedDate || 2023,
+  );
+  const [selectedMonth, setSelectedMonth] = useState(
+    activeDate?.selectedMonth || 'Jan',
+  );
+  const [selectedDate, setSelectedDate] = useState(
+    activeDate?.selectedDate || '01',
+  );
+  const [selectedHour, setSelectedHour] = useState(
+    activeDate?.selectedHour || '00',
+  );
+  const [selectedMinute, setSelectedMinute] = useState(
+    activeDate?.selectedMinute || '00',
+  );
 
   const Option = ({value, selectedValue, onSelect}) => (
     <TouchableOpacity onPress={() => onSelect(value)}>
@@ -39,7 +49,15 @@ const TBDatePickerAndroid = ({onPress}) => {
 
   const saveTimeAndDate = () => {
     let timeDate = `${selectedDate} ${selectedMonth}, ${selectedHour}:${selectedMinute}, ${selectedYear}`;
-    onPress(timeDate);
+
+    onPress({
+      selectedMinute,
+      selectedHour,
+      selectedDate,
+      selectedMonth,
+      selectedYear,
+      fullDate: timeDate,
+    });
   };
 
   useEffect(() => {

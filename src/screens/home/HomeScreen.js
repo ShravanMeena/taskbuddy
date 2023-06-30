@@ -1,36 +1,32 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import TBCard from '../../components/atoms/TBCard';
-import TBHeader from '../../components/atoms/TBHeader';
-import TBSpacer from '../../components/atoms/TBSpacer';
 import {FlatList, ScrollView} from 'react-native';
-import {TBSpacing} from '../../theme/TBTheme';
 import {ScreensName} from '../../constants/NavigationConstants';
 import {useSelector} from 'react-redux';
-import TBText from '../../components/atoms/TBText';
+
+import {TBSpacing} from '../../theme/TBTheme';
+import {TBCard, TBHeader, TBSpacer, TBText} from '../../components/atoms';
+import {CreateNewTaskButton} from '../../components/generic';
+
 import {
   renderItemForCompleted,
   renderItemForProgreess,
 } from './components/renderItems';
-import CreateNewTaskButton from '../../components/generic/CreateNewTaskButton';
+import {TBStrings} from '../../constants/TBConstants';
+import TBEmptyCard from '../../components/atoms/TBEmptyCard';
 
 export default function HomeScreen() {
-  const {tasks} = useSelector(state => state.todoReducer);
-
-  let completedTasks = tasks.filter(todo => todo.completed);
-  let onGoingTasks = tasks.filter(todo => !todo.completed);
+  const {completedTasks, onGoingTasks} = useSelector(
+    state => state.todoReducer,
+  );
 
   return (
     <>
-      {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
-      <ScrollView
-        nestedScrollEnabled
-        showsVerticalScrollIndicator={false}
-        style={{zIndex: 1000}}>
+      <ScrollView nestedScrollEnabled showsVerticalScrollIndicator={false}>
         <TBSpacer />
         <TBCard>
           <TBHeader
-            title="On Progress"
+            title={TBStrings.onGoingProgressBtnText}
             completed={false}
             hideBtn={onGoingTasks.length <= 1}
             screen={ScreensName.TaskDetails}
@@ -46,14 +42,12 @@ export default function HomeScreen() {
                 keyExtractor={item => item.id}
               />
             ) : (
-              <TBCard center>
-                <TBText>No On Going Tasks</TBText>
-              </TBCard>
+              <TBEmptyCard emptyMsg={TBStrings.emptyMsgNoProgressTask} />
             )}
           </TBCard>
           <TBSpacer />
           <TBHeader
-            title="Completed"
+            title={TBStrings.onCompletedBtnText}
             completed
             hideBtn={completedTasks.length <= 1}
             screen={ScreensName.TaskDetails}
@@ -66,9 +60,7 @@ export default function HomeScreen() {
                 keyExtractor={item => item.id}
               />
             ) : (
-              <TBCard center>
-                <TBText>No Completed Tasks</TBText>
-              </TBCard>
+              <TBEmptyCard emptyMsg={TBStrings.emptyMsgNoCompletedTask} />
             )}
           </TBCard>
           <TBSpacer />
@@ -76,6 +68,5 @@ export default function HomeScreen() {
       </ScrollView>
       <CreateNewTaskButton />
     </>
-    // </TouchableWithoutFeedback>
   );
 }

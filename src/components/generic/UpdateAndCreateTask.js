@@ -1,30 +1,34 @@
 import React, {useState} from 'react';
-import TBInput from '../atoms/TBInput';
-import TBButton from '../atoms/TBButton';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   createTaskAction,
   deleteTaskAction,
   updateTaskAction,
 } from '../../redux/actions/todoActions';
-import TBSpacer from '../atoms/TBSpacer';
 import {
   TBColors,
   TBComponentSize,
   TBFontSize,
   TBSpacing,
 } from '../../theme/TBTheme';
-import TBSwitch from '../atoms/TBSwitch';
-import TBCard from '../atoms/TBCard';
-import TBText from '../atoms/TBText';
-import {generateUUID} from '../../utils/CommonUtils';
-import TBModal from '../atoms/TBModal';
-import CategoriesList from './components/CategoriesList';
-import PrioritiesList from './components/PrioritiesList';
-import TBDivider from '../atoms/TBDivider';
+
+import {
+  TBButton,
+  TBCard,
+  TBDivider,
+  TBInput,
+  TBModal,
+  TBSwitch,
+  TBText,
+  TBDatePickerAndroid,
+  TBSpacer,
+} from '../atoms';
+import {CategoriesList, PrioritiesList} from './components';
+
+import {generateUUID, toastShow} from '../../utils/CommonUtils';
 import {Alert} from 'react-native';
 import LogHelper from '../../utils/LogHelper';
-import TBDatePickerAndroid from './TBDatePickerAndroid';
+import {TBStrings} from '../../constants/TBConstants';
 
 const UpdateAndCreateTask = ({closeModal}) => {
   const {readTask} = useSelector(state => state.todoReducer);
@@ -37,13 +41,14 @@ const UpdateAndCreateTask = ({closeModal}) => {
   const [taskPriority, setTaskPriority] = useState(readTask?.priority);
   const [completed, setCompleted] = useState(readTask?.completed || false);
   const [selectedDate, setSelectedDate] = useState(
-    readTask?.selectedDate || '',
+    readTask?.selectedDate || {},
   );
 
   const dispatch = useDispatch();
 
   const createAndUpdateTaskHandler = duplicate => {
     if (!taskTitle || !taskDescription) {
+      toastShow(TBStrings.taskCRUDErrRequired);
       return;
     }
     const newTask = {
@@ -60,19 +65,22 @@ const UpdateAndCreateTask = ({closeModal}) => {
       dispatch(updateTaskAction(readTask.id, newTask));
     } else {
       dispatch(createTaskAction(newTask));
-
-      setTaskTitle('');
-      setTaskDescription('');
-      setCompleted(false);
-      setTaskPriority('');
-      setTaskCategory('');
     }
-
+    clearState();
     closeModal();
   };
 
+  const clearState = () => {
+    setTaskTitle('');
+    setTaskDescription('');
+    setCompleted(false);
+    setTaskPriority('');
+    setTaskCategory('');
+    setSelectedDate('');
+  };
+
   const deleteTaskHandler = () => {
-    Alert.alert('Do you want to delete?', '', [
+    Alert.alert(TBStrings.deleteAlertTitle, '', [
       {
         text: 'Cancel',
         onPress: () => LogHelper.log('Cancel Pressed'),
@@ -91,18 +99,20 @@ const UpdateAndCreateTask = ({closeModal}) => {
   return (
     <TBCard width={TBComponentSize.contentWidth}>
       <TBInput
-        placeholder="Task Title"
+        placeholder={TBStrings.taskTitlePlaceholder}
         value={taskTitle}
         onChangeText={text => setTaskTitle(text)}
       />
       <TBInput
-        placeholder="Task Description"
+        placeholder={TBStrings.taskDescPlaceholder}
         value={taskDescription}
         onChangeText={text => setTaskDescription(text)}
       />
       <TBSpacer />
       <TBCard row>
-        <TBText fontSize={TBFontSize.xxl}>Is this task completed?</TBText>
+        <TBText fontSize={TBFontSize.xxl}>
+          {TBStrings.taskIsCompletedText}
+        </TBText>
         <TBSwitch
           value={completed}
           onValueChange={setCompleted}
@@ -116,7 +126,10 @@ const UpdateAndCreateTask = ({closeModal}) => {
           renderComponent={() => (
             <PrioritiesList setTaskPriority={setTaskPriority} />
           )}>
-          <TBButton title={taskPriority || 'Priority'} disabled />
+          <TBButton
+            title={taskPriority || TBStrings.taskPriorityBtnText}
+            disabled
+          />
         </TBModal>
         <TBSpacer />
 
@@ -124,13 +137,21 @@ const UpdateAndCreateTask = ({closeModal}) => {
           renderComponent={() => (
             <CategoriesList setTaskCategory={setTaskCategory} />
           )}>
-          <TBButton title={taskCategory || 'Categories'} disabled />
+          <TBButton
+            title={taskCategory || TBStrings.taskCategoriesBtnText}
+            disabled
+          />
         </TBModal>
       </TBCard>
       <TBSpacer />
 
-      {/* <TBText>Date: {selectedDate}</TBText> */}
-      <TBDatePickerAndroid onPress={e => setSelectedDate(e)} />
+      <TBText>
+        {TBStrings.taskDateSelectText} {selectedDate?.fullDate}
+      </TBText>
+      <TBDatePickerAndroid
+        activeDate={selectedDate}
+        onPress={e => setSelectedDate(e)}
+      />
 
       <TBSpacer />
       <TBDivider
@@ -141,7 +162,9 @@ const UpdateAndCreateTask = ({closeModal}) => {
       <TBSpacer />
       <TBCard row spaceBetween>
         <TBButton
-          title={readTask ? 'UPDATE TASK' : 'CREATE NEW TASK'}
+          title={
+            readTask ? TBStrings.taskUpdateBtnText : TBStrings.taskCreateBtnText
+          }
           onPress={createAndUpdateTaskHandler}
         />
 
@@ -149,13 +172,13 @@ const UpdateAndCreateTask = ({closeModal}) => {
           <>
             <TBButton
               backgroundColor={TBColors.green}
-              title="DUPLICATE TASK"
+              title={TBStrings.taskDuplicateBtnText}
               onPress={() => createAndUpdateTaskHandler(true)}
             />
 
             <TBButton
               backgroundColor={TBColors.redText}
-              title="DELETE"
+              title={TBStrings.taskDeleteBtnText}
               onPress={deleteTaskHandler}
             />
           </>

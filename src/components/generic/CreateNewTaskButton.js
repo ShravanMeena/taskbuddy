@@ -1,14 +1,13 @@
 import React from 'react';
-import TBModal from '../atoms/TBModal';
-import TBCard from '../atoms/TBCard';
 import {
   TBColors,
   TBFontSize,
   TBFontWeight,
   TBSpacing,
 } from '../../theme/TBTheme';
-import TBText from '../atoms/TBText';
 import TBSpacer from '../atoms/TBSpacer';
+import {TBCard, TBModal, TBText} from '../atoms';
+import {TBStrings} from '../../constants/TBConstants';
 
 export default function CreateNewTaskButton() {
   return (
@@ -26,7 +25,7 @@ export default function CreateNewTaskButton() {
             fontSize={TBFontSize.xxxl}
             fontWeight={TBFontWeight.bolder}
             color={TBColors.white}>
-            CREATE NEW TASK
+            {TBStrings.commonCreateBtnText}
           </TBText>
         </TBCard>
       </TBCard>

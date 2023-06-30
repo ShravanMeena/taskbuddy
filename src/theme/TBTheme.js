@@ -193,18 +193,7 @@ export const TBComponentSize = {
 };
 
 export const TBFontFamily = {
-  regular: 'Roobert-Regular',
-  regularItalic: 'Roobert-RegularItalic',
-  bold: 'Roobert-Bold',
-  boldItalic: 'Roobert-BoldItalic',
-  heavy: 'Roobert-Heavy',
-  heavyItalic: 'Roobert-HeavyItalic',
-  semiBold: 'Roobert-SemiBold',
-  semiBoldItalic: 'Roobert-SemiBoldItalic',
-  light: 'Roobert-Light',
-  lightItalic: 'Roobert-LightItalic',
-  medium: 'Roobert-Medium',
-  mediumItalic: 'Roobert-MediumItalic',
+  // regular: 'Roobert-Regular',
 };
 
 export const TBColors = {
