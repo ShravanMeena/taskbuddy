@@ -46,6 +46,12 @@ The TaskBuddy App is built using the React Native CLI. It follows a modular code
 
 For detailed code documentation, please refer to the source code.
 
+### Code quality & consistency:
+
+- In this project I use absolute path for import ([What is absolute path and how to implement?](https://shravanmeena.medium.com/using-absolute-paths-in-react-native-820d6a927a6e))
+- Helper function for managing common function like for showing error as a toast.
+- I try to write clean and efficient code (You can see [here](https://github.com/ShravanMeena/taskbuddy))
+
 ## Design
 
 You can find the design files at the following link: [Designs](https://cdn.dribbble.com/users/9769475/screenshots/19575729/media/7dc0cb142b52420d73f62913bb9d1bc7.jpg)
@@ -66,13 +72,6 @@ To run this application, you need to have the following software installed on yo
 - download or clone the [repository](https://github.com/ShravanMeena/taskbuddy.git)
 - `npm install`
 - run `npx react-native run-ios/android`
-
-
-### Code quality & consistency:
-
-- In this project I use absolute path for import ([What is absolute path and how to implement?](https://shravanmeena.medium.com/using-absolute-paths-in-react-native-820d6a927a6e))
-- Helper function for managing common function like for showing error as a toast.
-- I try to write clean and efficient code (You can see [here](https://github.com/ShravanMeena/taskbuddy))
 
 # Note
 
