@@ -73,11 +73,6 @@ To run this application, you need to have the following software installed on yo
 - Helper function for managing common function like for showing error as a toast.
 - I try to write clean and efficient code (You can see [here](https://github.com/ShravanMeena/taskbuddy))
 
-### Reusability
-
-- So I have created reusabale helper functions.
-- for this I have create a proper `ui` folder so we can use them all over the code
-
 # Note
 
 - For any doubts ,feel free to connect on mail `shravanmeena47@gmail.com`.
