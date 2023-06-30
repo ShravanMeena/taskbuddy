@@ -60,9 +60,25 @@ To run this application, you need to have the following software installed on yo
 - Xcode (for iOS development)
 - Android Studio (for Android development)
 
-### Installation
+### Setup
 
-1. Clone the repository:
+- download or clone the [repository](https://github.com/ShravanMeena/taskbuddy.git)
+- `npm install`
+- run `npx react-native run-ios/android`
 
-```bash
-git clone https://github.com/ShravanMeena/taskbuddy.git
+
+### Code quality & consistency:
+
+- In this project I use absolute path for import ([What is absolute path?](https://dev.to/abrahamlawson/using-absolute-paths-in-react-native-24ak))
+- Helper function for managing common function like for showing error as a toast.
+- I try to write clean and efficient code (You can see [here](https://github.com/ShravanMeena/taskbuddy))
+
+### Reusability
+
+- So I have created reusabale helper functions.
+- for this I have create a proper `ui` folder so we can use them all over the code
+
+# Note
+
+- For any doubts ,feel free to connect on mail `shravanmeena47@gmail.com`.
+
