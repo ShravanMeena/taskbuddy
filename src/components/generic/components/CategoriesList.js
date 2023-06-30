@@ -18,7 +18,7 @@ export default function CategoriesList({setTaskCategory}) {
       showsHorizontalScrollIndicator={false}
       horizontal
       renderItem={renderItem}
-      keyExtractor={item => item}
+      keyExtractor={item => item.id}
     />
   );
 }
