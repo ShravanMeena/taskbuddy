@@ -10,7 +10,7 @@ import {
 
 import {TBPriorityColor} from '@constants/TBConstants';
 
-import {TBModal, TBDivider, TBText, TBCard} from '../atoms/TBModal';
+import {TBModal, TBDivider, TBText, TBCard} from '../atoms';
 
 export default function TaskCompletedCard({task}) {
   let {fullDate} = task.selectedDate;
