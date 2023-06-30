@@ -25,18 +25,19 @@ export const TBStrings = {
   taskDuplicateBtnText: 'DUPLICATE TASK',
   taskPriorityBtnText: 'Select Priority',
   taskCategoriesBtnText: 'Select Categories',
-  taskIsCompletedText:"Is this task completed?",
-  taskDateSelectText:"Selected Date: "
-  // errors:
-  taskCRUDErrRequired: "Every Field Required!",
+  taskIsCompletedText: 'Is this task completed?',
+  taskDateSelectText: 'Selected Date: ',
+
+  // errors
+  taskCRUDErrRequired: 'Every Field Required!',
 
   // common
-  commonCreateBtnText:"CREATE NEW TASK",
+  commonCreateBtnText: 'CREATE NEW TASK',
 
   // task card
-  taskCardDescText:"Description",
-  taskCardPrioritText:"Priority",
-  taskCardCategoryText:"Category",
+  taskCardDescText: 'Description',
+  taskCardPrioritText: 'Priority',
+  taskCardCategoryText: 'Category',
 };
 
 export const TBPriorityColor = {
