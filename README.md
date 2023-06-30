@@ -69,7 +69,7 @@ To run this application, you need to have the following software installed on yo
 
 ### Code quality & consistency:
 
-- In this project I use absolute path for import ([What is absolute path?](https://dev.to/abrahamlawson/using-absolute-paths-in-react-native-24ak))
+- In this project I use absolute path for import ([What is absolute path and how to implement?](https://shravanmeena.medium.com/using-absolute-paths-in-react-native-820d6a927a6e))
 - Helper function for managing common function like for showing error as a toast.
 - I try to write clean and efficient code (You can see [here](https://github.com/ShravanMeena/taskbuddy))
 
