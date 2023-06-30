@@ -1,4 +1,4 @@
-import {ToastAndroid} from 'react-native';
+import {Platform, ToastAndroid} from 'react-native';
 
 export const generateUUID = () => {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -17,5 +17,7 @@ export const isNullorUndefined = value => {
 };
 
 export const toastShow = msg => {
-  ToastAndroid.showWithGravity(msg, ToastAndroid.LONG, ToastAndroid.TOP);
+  if (Platform.OS !== 'ios') {
+    ToastAndroid.showWithGravity(msg, ToastAndroid.LONG, ToastAndroid.TOP);
+  }
 };
