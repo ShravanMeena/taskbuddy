@@ -1,5 +1,5 @@
 import React from 'react';
-import {TBComponentSize} from '../../theme/TBTheme';
+import {TBComponentSize} from '@theme/TBTheme';
 import {TBText, TBCard} from './';
 
 export default function TBEmptyCard({emptyMsg}) {

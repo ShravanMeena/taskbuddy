@@ -1,10 +1,15 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {FlatList} from 'react-native';
-import {TBSpacing} from '../../theme/TBTheme';
 import {useSelector} from 'react-redux';
-import {TaskProgressCard} from '../../components/generic';
-import {TBCard, TBHeader, TBText} from '../../components/atoms';
+
+import {TBSpacing} from '@theme/TBTheme';
+
+import {TBStrings} from '@constants/TBConstants';
+
+import {TaskProgressCard} from '@components/generic';
+import {TBCard, TBHeader, TBEmptyCard} from '@components/atoms';
+
+const {emptyMsgSeeAllTask} = TBStrings;
 
 export default function TaskDetails({route}) {
   const {tasks} = useSelector(state => state.todoReducer);
@@ -36,9 +41,7 @@ export default function TaskDetails({route}) {
           keyExtractor={item => item.id}
         />
       ) : (
-        <TBCard center>
-          <TBText>No Task here</TBText>
-        </TBCard>
+        <TBEmptyCard emptyMsg={emptyMsgSeeAllTask} />
       )}
     </TBCard>
   );

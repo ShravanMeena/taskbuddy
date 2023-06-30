@@ -1,16 +1,16 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import HomeScreen from '../screens/home/HomeScreen';
+
+import {ScreensName} from '@constants/NavigationConstants';
+import {HomeScreen, LandingScreen, TaskDetailsScreen} from '@screens';
+
+import {navigationRef} from './helper/NavigationHelper';
 import {
   closeConfig,
   forFadeAnim,
   openConfig,
 } from './configs/NavigationConfigs';
-import Landing from '../screens/landing/Landing';
-import {ScreensName} from '../constants/NavigationConstants';
-import TaskDetails from '../screens/taskDetails/TaskDetails';
-import {navigationRef} from './helper/NavigationHelper';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,7 +20,7 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen
           name={ScreensName.Landing}
-          component={Landing}
+          component={LandingScreen}
           options={{
             headerShown: false,
             transitionSpec: {open: openConfig, close: closeConfig},
@@ -40,7 +40,7 @@ function App() {
 
         <Stack.Screen
           name={ScreensName.TaskDetails}
-          component={TaskDetails}
+          component={TaskDetailsScreen}
           options={{
             headerShown: false,
             transitionSpec: {open: openConfig, close: closeConfig},

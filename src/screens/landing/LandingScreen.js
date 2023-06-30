@@ -1,17 +1,5 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-
-import {TBStrings} from '../../constants/TBConstants';
 import {useNavigation} from '@react-navigation/native';
-import {ScreensName} from '../../constants/NavigationConstants';
-
-import {
-  TBButton,
-  TBCard,
-  TBImage,
-  TBSpacer,
-  TBText,
-} from '../../components/atoms';
 
 import {
   TBColors,
@@ -19,9 +7,16 @@ import {
   TBFontSize,
   TBFontWeight,
   TBSpacing,
-} from '../../theme/TBTheme';
+} from '@theme/TBTheme';
 
-const ToDoListPng = require('../../assets/images/to_do_list.png');
+import {TBStrings} from '@constants/TBConstants';
+import {ScreensName} from '@constants/NavigationConstants';
+
+import {TBButton, TBCard, TBImage, TBSpacer, TBText} from '@components/atoms';
+
+const ToDoListPng = require('@assets/images/to_do_list.png');
+
+const {landingTitle, landingDescription, appName, startBtnText} = TBStrings;
 
 export default function Landing() {
   const {navigate} = useNavigation();
@@ -39,12 +34,12 @@ export default function Landing() {
       }}>
       <TBCard>
         <TBText fontSize={TBFontSize.xxxxxl} fontWeight={TBFontWeight.bolder}>
-          {TBStrings.landingTitle}{' '}
+          {landingTitle}{' '}
           <TBText
             style={{color: TBColors.primary, textDecorationLine: 'underline'}}
             fontSize={TBFontSize.xxxxxl}
             fontWeight={TBFontWeight.bolder}>
-            {TBStrings.appName}
+            {appName}
           </TBText>
         </TBText>
         <TBSpacer />
@@ -55,13 +50,13 @@ export default function Landing() {
             height: TBComponentSize.imageHeight,
           }}
         />
-        <TBText fontSize={TBFontSize.xl}>{TBStrings.landingDescription}</TBText>
+        <TBText fontSize={TBFontSize.xl}>{landingDescription}</TBText>
       </TBCard>
 
       <TBCard center>
         <TBButton
           onPress={navigateToHome}
-          title={TBStrings.startBtnText}
+          title={startBtnText}
           width={TBComponentSize.buttonWidth}
           borderRadius={TBComponentSize.circularButtonRadius}
           titleStyle={{color: TBColors.white, fontSize: TBFontSize.xxl}}

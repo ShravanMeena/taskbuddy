@@ -1,19 +1,26 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {FlatList, ScrollView} from 'react-native';
-import {ScreensName} from '../../constants/NavigationConstants';
 import {useSelector} from 'react-redux';
 
-import {TBSpacing} from '../../theme/TBTheme';
-import {TBCard, TBHeader, TBSpacer, TBText} from '../../components/atoms';
-import {CreateNewTaskButton} from '../../components/generic';
+import {TBSpacing} from '@theme/TBTheme';
+
+import {TBStrings} from '@constants/TBConstants';
+import {ScreensName} from '@constants/NavigationConstants';
+
+import {TBCard, TBHeader, TBSpacer, TBEmptyCard} from '@components/atoms';
+import {CreateNewTaskButton} from '@components/generic';
 
 import {
   renderItemForCompleted,
   renderItemForProgreess,
 } from './components/renderItems';
-import {TBStrings} from '../../constants/TBConstants';
-import TBEmptyCard from '../../components/atoms/TBEmptyCard';
+
+const {
+  onGoingProgressBtnText,
+  emptyMsgNoProgressTask,
+  onCompletedBtnText,
+  emptyMsgNoCompletedTask,
+} = TBStrings;
 
 export default function HomeScreen() {
   const {completedTasks, onGoingTasks} = useSelector(
@@ -26,7 +33,7 @@ export default function HomeScreen() {
         <TBSpacer />
         <TBCard>
           <TBHeader
-            title={TBStrings.onGoingProgressBtnText}
+            title={onGoingProgressBtnText}
             completed={false}
             hideBtn={onGoingTasks.length <= 1}
             screen={ScreensName.TaskDetails}
@@ -42,12 +49,12 @@ export default function HomeScreen() {
                 keyExtractor={item => item.id}
               />
             ) : (
-              <TBEmptyCard emptyMsg={TBStrings.emptyMsgNoProgressTask} />
+              <TBEmptyCard emptyMsg={emptyMsgNoProgressTask} />
             )}
           </TBCard>
           <TBSpacer />
           <TBHeader
-            title={TBStrings.onCompletedBtnText}
+            title={onCompletedBtnText}
             completed
             hideBtn={completedTasks.length <= 1}
             screen={ScreensName.TaskDetails}
@@ -60,7 +67,7 @@ export default function HomeScreen() {
                 keyExtractor={item => item.id}
               />
             ) : (
-              <TBEmptyCard emptyMsg={TBStrings.emptyMsgNoCompletedTask} />
+              <TBEmptyCard emptyMsg={emptyMsgNoCompletedTask} />
             )}
           </TBCard>
           <TBSpacer />

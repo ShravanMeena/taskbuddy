@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text} from 'react-native';
-import {TBColors, TBFontFamily, TBFontSize} from '../../theme/TBTheme';
+import {TBColors, TBFontFamily, TBFontSize} from '@theme/TBTheme';
 
 const TBText = ({
   style,

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Pressable} from 'react-native';
-import TBCard from './TBCard';
-import TBImage from './TBImage';
-import {TBComponentSize} from '../../theme/TBTheme';
+import {TBCard, TBImage} from './';
+
+import {TBComponentSize} from '@theme/TBTheme';
 
 const TBIcon = ({
   imageContainerStyles,

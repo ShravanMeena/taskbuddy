@@ -8,11 +8,12 @@ import {
   TouchableOpacity,
   Pressable,
 } from 'react-native';
-import {TBColors, TBOpacity, TBSpacing} from '../../theme/TBTheme';
 import {useDispatch} from 'react-redux';
-import {readByIdTaskAction} from '../../redux/actions/todoActions';
-import TBSpacer from './TBSpacer';
-import TBDivider from './TBDivider';
+
+import {TBColors, TBOpacity, TBSpacing} from '@theme/TBTheme';
+import {readByIdTaskAction} from '@redux/actions/todoActions';
+
+import {TBSpacer, TBDivider} from './';
 import {UpdateAndCreateTask} from '../generic';
 
 const TBModal = ({children, task, renderComponent}) => {

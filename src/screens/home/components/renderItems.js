@@ -1,16 +1,14 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {TBCard} from '../../../components/atoms';
-import {TaskCompletedCard, TaskProgressCard} from '../../../components/generic';
-import {TBComponentSize, TBSpacing} from '../../../theme/TBTheme';
+
+import {TBComponentSize, TBSpacing} from '@theme/TBTheme';
+
+import {TBCard} from '@components/atoms';
+import {TaskCompletedCard, TaskProgressCard} from '@components/generic';
 
 export const renderItemForProgreess = ({item}) => (
   <TBCard
     cardStyle={{
-      width:
-        // onGoingTasks?.length === 1
-        //   ? TBComponentSize.contentWidth
-        //   : TBComponentSize.cardBannerWidth,
-        TBComponentSize.cardBannerWidth,
+      width: TBComponentSize.cardBannerWidth,
       marginRight: TBSpacing.small,
     }}>
     <TaskProgressCard task={item} />

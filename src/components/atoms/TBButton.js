@@ -6,15 +6,9 @@ import {
   ActivityIndicator,
   Dimensions,
 } from 'react-native';
-import {
-  TBColors,
-  TBComponentSize,
-  TBFontSize,
-  TBSpacing,
-} from '../../theme/TBTheme';
-import TBText from './TBText';
-import TBSpacer from './TBSpacer';
-import TBImage from './TBImage';
+
+import {TBColors, TBComponentSize, TBFontSize, TBSpacing} from '@theme/TBTheme';
+import {TBText, TBSpacer, TBImage} from './';
 
 const TBButton = ({
   title,

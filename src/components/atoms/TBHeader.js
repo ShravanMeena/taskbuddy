@@ -1,16 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 import {
   TBColors,
   TBComponentSize,
   TBFontSize,
   TBFontWeight,
   TBSpacing,
-} from '../../theme/TBTheme';
-import TBCard from './TBCard';
-import TBText from './TBText';
-import TBButton from './TBButton';
-import {useNavigation} from '@react-navigation/native';
+} from '@theme/TBTheme';
+import {TBCard, TBText, TBButton} from './';
 
 export default function TBHeader({title, btnText, screen, completed, hideBtn}) {
   const {navigate} = useNavigation();

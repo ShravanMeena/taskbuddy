@@ -14,6 +14,7 @@ export const TBStrings = {
   // empty msg
   emptyMsgNoProgressTask: 'No On Going Tasks',
   emptyMsgNoCompletedTask: 'No Completed Tasks',
+  emptyMsgSeeAllTask: 'No Task here',
 
   // update and create
   deleteAlertTitle: 'Do you want to delete?',

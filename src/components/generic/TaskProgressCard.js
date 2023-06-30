@@ -1,18 +1,16 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import TBCard from '../atoms/TBCard';
 import {
   TBColors,
   TBComponentSize,
   TBFontSize,
   TBFontWeight,
   TBSpacing,
-} from '../../theme/TBTheme';
-import TBText from '../atoms/TBText';
-import TBSpacer from '../atoms/TBSpacer';
-import TBDivider from '../atoms/TBDivider';
-import TBModal from '../atoms/TBModal';
-import {TBPriorityColor, TBStrings} from '../../constants/TBConstants';
+} from '@theme/TBTheme';
+
+import {TBPriorityColor, TBStrings} from '@constants/TBConstants';
+
+import {TBModal, TBDivider, TBText, TBCard, TBSpacer} from '../atoms';
 
 export default function TaskProgressCard({task}) {
   let {fullDate} = task.selectedDate;

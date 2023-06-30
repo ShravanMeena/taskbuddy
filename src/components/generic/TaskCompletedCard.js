@@ -1,17 +1,16 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import TBCard from '../atoms/TBCard';
 import {
   TBColors,
   TBComponentSize,
   TBFontSize,
   TBFontWeight,
   TBSpacing,
-} from '../../theme/TBTheme';
-import TBText from '../atoms/TBText';
-import TBDivider from '../atoms/TBDivider';
-import TBModal from '../atoms/TBModal';
-import {TBPriorityColor} from '../../constants/TBConstants';
+} from '@theme/TBTheme';
+
+import {TBPriorityColor} from '@constants/TBConstants';
+
+import {TBModal, TBDivider, TBText, TBCard} from '../atoms/TBModal';
 
 export default function TaskCompletedCard({task}) {
   let {fullDate} = task.selectedDate;

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Switch} from 'react-native';
-import TBCard from './TBCard';
-import {TBColors, TBSpacing} from '../../theme/TBTheme';
+import {TBColors, TBSpacing} from '@theme/TBTheme';
+import {TBCard} from './';
 
 const TBSwitch = ({
   value,

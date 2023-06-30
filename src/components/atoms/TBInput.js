@@ -1,7 +1,6 @@
 import React from 'react';
 import {TextInput, StyleSheet} from 'react-native';
 
-import TBCard from './TBCard';
 import {
   TBColors,
   TBComponentSize,
@@ -9,9 +8,9 @@ import {
   TBFontSize,
   TBFontWeight,
   TBSpacing,
-} from '../../theme/TBTheme';
-import TBIcon from './TBIcon';
-import TBText from './TBText';
+} from '@theme/TBTheme';
+
+import {TBIcon, TBText, TBCard} from './';
 
 const TBInput = ({
   placeholder,

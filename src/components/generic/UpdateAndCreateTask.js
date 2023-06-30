@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  TBColors,
-  TBComponentSize,
-  TBFontSize,
-  TBSpacing,
-} from '../../theme/TBTheme';
+import {TBColors, TBComponentSize, TBFontSize, TBSpacing} from '@theme/TBTheme';
 
 import {
   TBButton,
@@ -18,10 +13,12 @@ import {
   TBSpacer,
 } from '../atoms';
 
-import {CategoriesList, PrioritiesList} from './components';
-import {TBStrings} from '../../constants/TBConstants';
+import {TBStrings} from '@constants/TBConstants';
+import {CategoriesListData, prioritiesList} from '@models/dummyTasksData';
 
-import {useCreateAndUpdateForm} from '../../hooks';
+import {useCreateAndUpdateForm} from '@hooks';
+
+import List from './components/List';
 
 const UpdateAndCreateTask = ({closeModal}) => {
   // business logic hoook
@@ -61,7 +58,7 @@ const UpdateAndCreateTask = ({closeModal}) => {
       <TBCard row>
         <TBModal
           renderComponent={() => (
-            <PrioritiesList setTaskPriority={values.setTaskPriority} />
+            <List setValue={values.setTaskPriority} data={prioritiesList} />
           )}>
           <TBButton
             title={getState.taskPriority || TBStrings.taskPriorityBtnText}
@@ -69,10 +66,9 @@ const UpdateAndCreateTask = ({closeModal}) => {
           />
         </TBModal>
         <TBSpacer />
-
         <TBModal
           renderComponent={() => (
-            <CategoriesList setTaskCategory={values.setTaskCategory} />
+            <List setValue={values.setTaskCategory} data={CategoriesListData} />
           )}>
           <TBButton
             title={getState.taskCategory || TBStrings.taskCategoriesBtnText}

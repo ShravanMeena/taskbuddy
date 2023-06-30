@@ -12,6 +12,7 @@ import TBSpacer from './TBSpacer';
 import TBSwitch from './TBSwitch';
 import TBText from './TBText';
 import TBDatePickerAndroid from './TBDatePickerAndroid';
+import TBEmptyCard from './TBEmptyCard';
 
 export {
   TBSwitch,
@@ -28,4 +29,5 @@ export {
   TBCard,
   TBButton,
   TBDatePickerAndroid,
+  TBEmptyCard
 };

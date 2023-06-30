@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {TBColors} from '../../theme/TBTheme';
+import {TBColors} from '@theme/TBTheme';
 
 export const TBCard = ({
   children,

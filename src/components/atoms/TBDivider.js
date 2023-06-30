@@ -1,6 +1,5 @@
 import React from 'react';
-import TBCard from './TBCard';
-import TBSpacer from './TBSpacer';
+import {TBSpacer, TBCard} from './';
 
 const TBDivider = ({
   mTop,

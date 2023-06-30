@@ -7,9 +7,8 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
-import TBModal from './TBModal';
-import TBCard from './TBCard';
-import {TBComponentSize, TBSpacing} from '../../theme/TBTheme';
+
+import {TBComponentSize, TBSpacing} from '@theme/TBTheme';
 import {
   dates,
   hours,
@@ -17,9 +16,9 @@ import {
   months,
   monthsShort,
   years,
-} from '../../models/monthData';
-import TBSpacer from './TBSpacer';
-import TBButton from './TBButton';
+} from '@models/monthData';
+
+import {TBSpacer, TBCard, TBModal, TBButton} from './';
 
 const TBDatePickerAndroid = ({onPress, activeDate}) => {
   const [selectedYear, setSelectedYear] = useState(
@@ -62,6 +61,7 @@ const TBDatePickerAndroid = ({onPress, activeDate}) => {
 
   useEffect(() => {
     saveTimeAndDate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDate, selectedHour, selectedMinute, selectedMonth, selectedYear]);
 
   return (

@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {TouchableOpacity, StyleSheet} from 'react-native';
+import {TBCard, TBText} from './';
 
-const CustomDropdown = ({options, onSelect}) => {
+const TBDropdown = ({options, onSelect}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -16,26 +17,26 @@ const CustomDropdown = ({options, onSelect}) => {
   };
 
   return (
-    <View style={styles.container}>
+    <TBCard style={styles.container}>
       <TouchableOpacity style={styles.dropdownHeader} onPress={toggleDropdown}>
-        <Text style={styles.selectedOption}>
+        <TBText style={styles.selectedOption}>
           {selectedOption || 'Select an option'}
-        </Text>
-        <Text style={styles.arrow}>{isOpen ? '▲' : '▼'}</Text>
+        </TBText>
+        <TBText style={styles.arrow}>{isOpen ? '▲' : '▼'}</TBText>
       </TouchableOpacity>
       {isOpen && (
-        <View style={styles.dropdownOptions}>
+        <TBCard style={styles.dropdownOptions}>
           {options.map(option => (
             <TouchableOpacity
               key={option}
               style={styles.option}
               onPress={() => handleOptionSelect(option)}>
-              <Text>{option}</Text>
+              <TBText>{option}</TBText>
             </TouchableOpacity>
           ))}
-        </View>
+        </TBCard>
       )}
-    </View>
+    </TBCard>
   );
 };
 
@@ -59,8 +60,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   dropdownOptions: {
-    position: 'absolute',
-    top: '100%',
+    // position: 'absolute',
+    top: 0,
     left: 0,
     right: 0,
     backgroundColor: '#fff',
@@ -77,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomDropdown;
+export default TBDropdown;
