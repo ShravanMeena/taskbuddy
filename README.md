@@ -74,8 +74,8 @@ To run this application, you need to have the following software installed on yo
 - run `npx react-native run-ios/android`
 
 ### Download App
-- [Android](https://github.com/ShravanMeena/taskbuddy/blob/main/src/assets/apk/app-release.apk)
-- [IOS](https://github.com/ShravanMeena/taskbuddy/blob/main/src/assets/apk/app-release.apk)
+- ✅ [Android](https://github.com/ShravanMeena/taskbuddy/blob/main/src/assets/apk/app-release.apk)
+- ❌ [IOS](https://github.com/ShravanMeena/taskbuddy/blob/main/src/assets/apk/TaskBuddy.ipa) `It will not work because i need UDID of your device`
 
 # Note
 
