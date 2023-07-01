@@ -73,6 +73,10 @@ To run this application, you need to have the following software installed on yo
 - `npm install`
 - run `npx react-native run-ios/android`
 
+### Download App
+- [Android](https://github.com/ShravanMeena/taskbuddy/blob/main/src/assets/apk/app-release.apk)
+- [IOS](https://github.com/ShravanMeena/taskbuddy/blob/main/src/assets/apk/app-release.apk)
+
 # Note
 
 - For any doubts ,feel free to connect on mail `shravanmeena47@gmail.com`.
