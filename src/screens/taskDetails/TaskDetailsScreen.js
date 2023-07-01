@@ -8,6 +8,8 @@ import {TBStrings} from '@constants/TBConstants';
 
 import {TaskProgressCard} from '@components/generic';
 import {TBCard, TBHeader, TBEmptyCard} from '@components/atoms';
+import TBCommonHeader from '@components/atoms/TBCommonHeader';
+import {goBack} from '@navigation/helper/NavigationHelper';
 
 const {emptyMsgSeeAllTask} = TBStrings;
 
@@ -29,20 +31,24 @@ export default function TaskDetails({route}) {
   );
 
   return (
-    <TBCard
-      cardStyle={{
-        padding: TBSpacing.large,
-      }}>
-      <TBHeader title={params?.title} hideBtn />
-      {allFilteredData.length > 0 ? (
-        <FlatList
-          data={allFilteredData}
-          renderItem={renderItemForProgreess}
-          keyExtractor={item => item.id}
-        />
-      ) : (
-        <TBEmptyCard emptyMsg={emptyMsgSeeAllTask} />
-      )}
-    </TBCard>
+    <>
+      <TBCommonHeader left onPressLeft={() => goBack()} />
+
+      <TBCard
+        cardStyle={{
+          padding: TBSpacing.large,
+        }}>
+        <TBHeader title={params?.title} hideBtn />
+        {allFilteredData.length > 0 ? (
+          <FlatList
+            data={allFilteredData}
+            renderItem={renderItemForProgreess}
+            keyExtractor={item => item.id}
+          />
+        ) : (
+          <TBEmptyCard emptyMsg={emptyMsgSeeAllTask} />
+        )}
+      </TBCard>
+    </>
   );
 }

@@ -34,6 +34,8 @@ export const TBStrings = {
 
   // common
   commonCreateBtnText: 'CREATE NEW TASK',
+  btnConfirmText: 'Confirm',
+  btnCancelText: 'Cancel',
 
   // task card
   taskCardDescText: 'Description',

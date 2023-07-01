@@ -4,7 +4,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   ActivityIndicator,
-  Dimensions,
+  // Dimensions,
 } from 'react-native';
 
 import {TBColors, TBComponentSize, TBFontSize, TBSpacing} from '@theme/TBTheme';
@@ -90,12 +90,12 @@ const TBButton = ({
         <>
           {loadingText ? (
             <>
-              <ActivityIndicator size={8} color="#000" />
+              <ActivityIndicator size={8} color={TBColors.black} />
               <TBSpacer width={TBSpacing.small} />
               {loadingComponent}
             </>
           ) : (
-            <ActivityIndicator size={12} color="#000" />
+            <ActivityIndicator size={12} color={TBColors.black} />
           )}
         </>
       ) : (
@@ -112,7 +112,7 @@ const TBButton = ({
   );
 };
 
-const {width} = Dimensions.get('screen');
+// const {width} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
   container: {

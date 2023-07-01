@@ -14,12 +14,15 @@ import {TBPriorityColor, TBStrings} from '@constants/TBConstants';
 
 import {TBModal, TBDivider, TBText, TBCard, TBSpacer, TBRadio} from '../atoms';
 import {updateTaskAction} from '@redux/actions/todoActions';
+import {capitalizeFirstLetter} from '@utils/CommonUtils';
+
+const {taskCardDescText, taskCardPrioritText, taskCardCategoryText} = TBStrings;
 
 export default function TaskProgressCard({task}) {
   let {fullDate} = task.selectedDate;
   const dispatch = useDispatch();
   const updateStatus = () => {
-    let newTask = {...task, completed: true};
+    let newTask = {...task, completed: !task.completed};
     dispatch(updateTaskAction(task.id, newTask));
   };
 
@@ -34,12 +37,15 @@ export default function TaskProgressCard({task}) {
         }}>
         <TBCard row spaceBetween>
           <TBText
+            style={{
+              width: '80%',
+            }}
             numberOfLines={1}
             fontSize={TBFontSize.xxxl}
             fontWeight={TBFontWeight.semibold}>
-            {task.title}
+            {capitalizeFirstLetter(task.title)}
           </TBText>
-          <TBRadio onPress={updateStatus} />
+          <TBRadio isCompleted={task.completed} onPress={updateStatus} />
         </TBCard>
 
         <TBSpacer />
@@ -52,7 +58,7 @@ export default function TaskProgressCard({task}) {
           height={1}
         />
         <TBText fontSize={TBFontSize.large} color={TBColors.lightGreyText}>
-          {TBStrings.taskCardDescText}:
+          {taskCardDescText}:
         </TBText>
         <TBText numberOfLines={2} fontSize={TBFontSize.large}>
           {task.description}
@@ -61,7 +67,7 @@ export default function TaskProgressCard({task}) {
         <TBCard row spaceBetween>
           <TBCard>
             <TBText fontSize={TBFontSize.large} color={TBColors.lightGreyText}>
-              {TBStrings.taskCardPrioritText}:
+              {taskCardPrioritText}:
             </TBText>
             <TBText fontSize={TBFontSize.large}>
               {task.priority?.toUpperCase()}
@@ -69,7 +75,7 @@ export default function TaskProgressCard({task}) {
           </TBCard>
           <TBCard>
             <TBText fontSize={TBFontSize.large} color={TBColors.lightGreyText}>
-              {TBStrings.taskCardCategoryText}:
+              {taskCardCategoryText}:
             </TBText>
             <TBText fontSize={TBFontSize.large}>
               {task.category?.toUpperCase()}

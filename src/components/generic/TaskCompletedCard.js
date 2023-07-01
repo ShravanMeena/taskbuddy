@@ -1,5 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+import {useDispatch} from 'react-redux';
+
 import {
   TBColors,
   TBComponentSize,
@@ -9,10 +11,9 @@ import {
 } from '@theme/TBTheme';
 
 import {TBPriorityColor} from '@constants/TBConstants';
-
+import {updateTaskAction} from '@redux/actions/todoActions';
 import {TBModal, TBDivider, TBText, TBCard, TBRadio} from '../atoms';
-import {useDispatch} from 'react-redux';
-import {updateTaskAction} from '../../redux/actions/todoActions';
+import {capitalizeFirstLetter} from '@utils/CommonUtils';
 
 export default function TaskCompletedCard({task}) {
   let {fullDate} = task.selectedDate;
@@ -48,8 +49,9 @@ export default function TaskCompletedCard({task}) {
               fontWeight={TBFontWeight.semibold}
               style={{
                 textDecorationLine: 'line-through',
+                width: '80%',
               }}>
-              {task.title}
+              {capitalizeFirstLetter(task.title)}
             </TBText>
             <TBRadio isCompleted onPress={updateStatus} />
           </TBCard>

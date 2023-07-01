@@ -41,9 +41,12 @@ const UpdateAndCreateTask = ({closeModal}) => {
         placeholder={TBStrings.taskDescPlaceholder}
         value={getState.taskDescription}
         onChangeText={text => values.setTaskDescription(text)}
+        multiline
+        numberOfLines={4}
+        height={TBComponentSize.cardWidthXS}
       />
       <TBSpacer />
-      <TBCard row>
+      <TBCard row spaceBetween>
         <TBText fontSize={TBFontSize.xxl}>
           {TBStrings.taskIsCompletedText}
         </TBText>
@@ -55,36 +58,34 @@ const UpdateAndCreateTask = ({closeModal}) => {
       </TBCard>
 
       <TBSpacer />
-      <TBCard row>
-        <TBModal
-          renderComponent={() => (
-            <List setValue={values.setTaskPriority} data={prioritiesList} />
-          )}>
-          <TBButton
-            title={getState.taskPriority || TBStrings.taskPriorityBtnText}
-            disabled
-          />
-        </TBModal>
-        <TBSpacer />
-        <TBModal
-          renderComponent={() => (
-            <List setValue={values.setTaskCategory} data={CategoriesListData} />
-          )}>
-          <TBButton
-            title={getState.taskCategory || TBStrings.taskCategoriesBtnText}
-            disabled
-          />
-        </TBModal>
-      </TBCard>
+      <TBModal
+        renderComponent={() => (
+          <List setValue={values.setTaskPriority} data={prioritiesList} />
+        )}>
+        <TBButton
+          title={getState.taskPriority || TBStrings.taskPriorityBtnText}
+          disabled
+        />
+      </TBModal>
+      <TBSpacer />
+      <TBModal
+        renderComponent={() => (
+          <List setValue={values.setTaskCategory} data={CategoriesListData} />
+        )}>
+        <TBButton
+          title={getState.taskCategory || TBStrings.taskCategoriesBtnText}
+          disabled
+        />
+      </TBModal>
       <TBSpacer />
 
-      <TBText>
-        {TBStrings.taskDateSelectText} {getState.selectedDate?.fullDate}
-      </TBText>
       <TBDatePickerAndroid
         activeDate={getState.selectedDate}
         onPress={e => values.setSelectedDate(e)}
       />
+      <TBText>
+        {TBStrings.taskDateSelectText} {getState.selectedDate?.fullDate}
+      </TBText>
 
       <TBSpacer />
       <TBDivider

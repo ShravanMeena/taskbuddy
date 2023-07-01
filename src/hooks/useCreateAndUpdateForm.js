@@ -1,14 +1,20 @@
 import {useState} from 'react';
+import {Alert} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {TBStrings} from '../constants/TBConstants';
-import {generateUUID, toastShow} from '../utils/CommonUtils';
+
+import {TBStrings} from '@constants/TBConstants';
+import {generateUUID, toastShow} from '@utils/CommonUtils';
+import LogHelper from '@utils/LogHelper';
 import {
   createTaskAction,
   deleteTaskAction,
   updateTaskAction,
-} from '../redux/actions/todoActions';
-import LogHelper from '../utils/LogHelper';
-import {Alert} from 'react-native';
+} from '@redux/actions/todoActions';
+
+import {CategoriesListData, prioritiesList} from '@models/dummyTasksData';
+
+const {taskCRUDErrRequired, deleteAlertTitle, btnConfirmText, btnCancelText} =
+  TBStrings;
 
 function useCreateAndUpdateForm(closeModal) {
   const {readTask} = useSelector(state => state.todoReducer);
@@ -21,22 +27,22 @@ function useCreateAndUpdateForm(closeModal) {
   const [taskPriority, setTaskPriority] = useState(readTask?.priority);
   const [completed, setCompleted] = useState(readTask?.completed || false);
   const [selectedDate, setSelectedDate] = useState(
-    readTask?.selectedDate || {},
+    readTask?.selectedDate || '',
   );
 
   const dispatch = useDispatch();
 
   const createAndUpdateTaskHandler = duplicate => {
-    if (!taskTitle || !taskDescription) {
-      toastShow(TBStrings.taskCRUDErrRequired);
+    if (!taskTitle || !taskDescription || !selectedDate) {
+      toastShow(taskCRUDErrRequired);
       return;
     }
     const newTask = {
       id: readTask && !duplicate ? readTask.id : generateUUID(),
       title: taskTitle,
       description: taskDescription,
-      priority: taskPriority,
-      category: taskCategory,
+      priority: taskPriority || prioritiesList[0].name,
+      category: taskCategory || CategoriesListData[0].name,
       completed,
       selectedDate,
     };
@@ -60,14 +66,14 @@ function useCreateAndUpdateForm(closeModal) {
   };
 
   const deleteTaskHandler = () => {
-    Alert.alert(TBStrings.deleteAlertTitle, '', [
+    Alert.alert(deleteAlertTitle, '', [
       {
-        text: 'Cancel',
-        onPress: () => LogHelper.log('Cancel Pressed'),
+        text: btnCancelText,
+        onPress: () => LogHelper.log(btnCancelText),
         style: 'cancel',
       },
       {
-        text: 'CONFIRM',
+        text: btnConfirmText,
         onPress: () => {
           dispatch(deleteTaskAction(readTask.id));
           closeModal();

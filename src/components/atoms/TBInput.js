@@ -38,6 +38,7 @@ const TBInput = ({
   textAlignVertical,
   leftImageSource,
   rightImageSource,
+  numberOfLines,
 }) => {
   return (
     <TBCard
@@ -80,6 +81,7 @@ const TBInput = ({
         editable={editable}
         returnKeyType={returnKeyType ?? 'done'}
         multiline={multiline}
+        numberOfLines={numberOfLines}
         textAlignVertical={textAlignVertical}
       />
       {right && (rightIconUrl || rightImageSource) && (

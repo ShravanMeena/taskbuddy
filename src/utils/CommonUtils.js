@@ -19,5 +19,7 @@ export const isNullorUndefined = value => {
 export const toastShow = msg => {
   if (Platform.OS !== 'ios') {
     ToastAndroid.showWithGravity(msg, ToastAndroid.LONG, ToastAndroid.TOP);
+  } else {
+    alert(msg);
   }
 };

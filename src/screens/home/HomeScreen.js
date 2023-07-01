@@ -38,7 +38,6 @@ export default function HomeScreen() {
             hideBtn={onGoingTasks.length <= 1}
             screen={ScreensName.TaskDetails}
           />
-
           <TBCard pLeft={TBSpacing.medium}>
             {onGoingTasks?.length > 0 ? (
               <FlatList
