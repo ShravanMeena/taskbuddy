@@ -4,10 +4,10 @@
 import * as React from 'react';
 import {StatusBar} from 'react-native';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
-import {TBColors} from './src/theme/TBTheme';
-import {CoreNavigation} from './src/navigation';
+import {TBColors} from '@theme/TBTheme';
+import {CoreNavigation} from '@navigation';
 import {Provider} from 'react-redux';
-import {store} from './src/redux/Store';
+import {store} from '@redux/Store';
 
 function App() {
   return (

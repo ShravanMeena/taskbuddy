@@ -11,7 +11,6 @@
     "clean": "npm cache verify && cd android && ./gradlew clean && cd .. && watchman watch-del-all"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.18.2",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/native-stack": "^6.9.13",
     "@react-navigation/stack": "^6.3.17",
