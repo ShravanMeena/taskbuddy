@@ -47,7 +47,7 @@ const TBModal = ({children, task, renderComponent}) => {
                 width={TBSpacing.xxl}
               />
               <TBSpacer />
-              <ScrollView>
+              <ScrollView keyboardShouldPersistTaps="handled">
                 {renderComponent ? (
                   renderComponent()
                 ) : (
