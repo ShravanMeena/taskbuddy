@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {
   TBColors,
@@ -21,6 +21,8 @@ const {taskCardDescText, taskCardPrioritText, taskCardCategoryText} = TBStrings;
 export default function TaskProgressCard({task}) {
   let {fullDate} = task.selectedDate;
   const dispatch = useDispatch();
+  const {onGoingTasks} = useSelector(state => state.todoReducer);
+
   const updateStatus = () => {
     let newTask = {...task, completed: !task.completed};
     dispatch(updateTaskAction(task.id, newTask));
