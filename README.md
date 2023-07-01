@@ -75,7 +75,7 @@ To run this application, you need to have the following software installed on yo
 
 ### Download App
 - [Android](https://github.com/ShravanMeena/taskbuddy/blob/main/src/assets/apk/app-release.apk) ✅
-- [IOS](https://github.com/ShravanMeena/taskbuddy/blob/main/src/assets/apk/TaskBuddy.ipa) ❌ `It will not work because I need UDID of your device`
+- [IOS](https://i.diawi.com/mkJf3x) ❌ `It will not work because I need UDID of your device`
 
 # Note
 
