@@ -73,9 +73,16 @@ To run this application, you need to have the following software installed on yo
 - `npm install`
 - run `npx react-native run-ios/android`
 
-### Download App
+### Download App Via link
 - [Android](https://i.diawi.com/ErVTv8) ✅
 - [IOS](https://i.diawi.com/mkJf3x) ❌ `It will not work because I need UDID of your device`
+
+### Download App Via QR CODE
+![App ANDROID](https://www.diawi.com/qrcode/link/ErVTv8)
+`APP APK`
+
+![App IOS](https://www.diawi.com/qrcode/link/mkJf3x)
+`APP IOS`
 
 # Note
 
