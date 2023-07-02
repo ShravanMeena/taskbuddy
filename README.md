@@ -78,11 +78,9 @@ To run this application, you need to have the following software installed on yo
 - [IOS](https://i.diawi.com/mkJf3x) ❌ `It will not work because I need UDID of your device`
 
 ### Download App Via QR CODE
-![App ANDROID](https://www.diawi.com/qrcode/link/ErVTv8)
-`APP APK`
-
-![App IOS](https://www.diawi.com/qrcode/link/mkJf3x)
-`APP IOS`
+App ANDROID             |  App IOS
+:-------------------------:|:-------------------------:
+![](https://www.diawi.com/qrcode/link/ErVTv8)  |  ![](https://www.diawi.com/qrcode/link/mkJf3x)
 
 # Note
 
