@@ -1,6 +1,5 @@
 // Play.ht to the moon 🚀
 
-/* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
 import {StatusBar} from 'react-native';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
